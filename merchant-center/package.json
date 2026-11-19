@@ -102,5 +102,10 @@
     "@types/react-router-dom": "<6",
     "headers-polyfill": "3.2.5",
     "nwsapi": "2.2.7"
+  },
+  "overrides": {
+    "lodash": "^4.18.1",
+    "jsondiffpatch": "^0.7.7",
+    "zod": "^4.6.7"
   }
 }

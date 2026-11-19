@@ -6,3 +6,6 @@ tsconfig.tsbuildinfo
 .DS_Store
 .playwright-mcp
 .claude
+
+# Local Netlify folder
+.netlify
