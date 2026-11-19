@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { useApplicationContext } from '@commercetools-frontend/application-shell-connectors';
 import SecondaryButton from '@commercetools-uikit/secondary-button';
 import SelectInput from '@commercetools-uikit/select-input';

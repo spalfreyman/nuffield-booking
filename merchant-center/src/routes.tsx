@@ -1,3 +1,4 @@
+import React from 'react';
 import { Redirect, Route, Switch, useRouteMatch } from 'react-router-dom';
 import Spacings from '@commercetools-uikit/spacings';
 import Calendar from './components/calendar';

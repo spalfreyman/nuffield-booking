@@ -1,3 +1,4 @@
+import React from 'react';
 import type { ReactNode } from 'react';
 import LoadingSpinner from '@commercetools-uikit/loading-spinner';
 import { ContentNotification } from '@commercetools-uikit/notifications';

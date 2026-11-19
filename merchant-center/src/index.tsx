@@ -1,3 +1,4 @@
+import React from 'react';
 /// <reference types="@commercetools-frontend/application-config/client" />
 
 import { createRoot } from 'react-dom/client';

@@ -1,6 +1,8 @@
 {
   "extends": "@commercetools-frontend/application-config/tsconfig-mc-app.json",
   "compilerOptions": {
+    // The Babel preset uses the classic JSX runtime, so every .tsx file imports React explicitly; tsc would flag that import as unused (eslint still checks unused variables).
+    "noUnusedLocals": false,
     "typeRoots": ["@types", "node_modules/@types"],
     // Allow tsc to resolve dependencies of `@types` packages in the way pnpm sets up the `node_modules`.
     "preserveSymlinks": false

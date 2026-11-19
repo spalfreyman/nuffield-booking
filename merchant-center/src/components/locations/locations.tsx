@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import React, { useMemo } from 'react';
 import { useHistory } from 'react-router-dom';
 import DataTable from '@commercetools-uikit/data-table';
 import SelectInput from '@commercetools-uikit/select-input';
