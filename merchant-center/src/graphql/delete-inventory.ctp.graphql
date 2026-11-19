@@ -1,0 +1,5 @@
+mutation DeleteInventoryEntry($id: String!, $version: Long!) {
+  deleteInventoryEntry(id: $id, version: $version) {
+    id
+  }
+}

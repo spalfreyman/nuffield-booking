@@ -1,0 +1,9 @@
+[
+  { "key": "cg-insurance", "groupName": "Insurance customers" },
+  { "key": "cg-ins-bupa", "groupName": "Insurance: Bupa" },
+  { "key": "cg-ins-axa", "groupName": "Insurance: AXA Health" },
+  { "key": "cg-ins-aviva", "groupName": "Insurance: Aviva" },
+  { "key": "cg-ins-vitality", "groupName": "Insurance: Vitality" },
+  { "key": "cg-gym-member", "groupName": "Gym members" },
+  { "key": "cg-business", "groupName": "Business / corporate customers" }
+]

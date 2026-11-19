@@ -1,0 +1,8 @@
+*.env
+.env*
+node_modules
+.next
+tsconfig.tsbuildinfo
+.DS_Store
+.playwright-mcp
+.claude

@@ -1,0 +1,19 @@
+query Locations {
+  channels(limit: 500, where: "key is defined") {
+    total
+    results {
+      id
+      key
+      nameAllLocales {
+        locale
+        value
+      }
+      custom {
+        customFieldsRaw {
+          name
+          value
+        }
+      }
+    }
+  }
+}

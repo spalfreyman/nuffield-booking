@@ -1,0 +1,1392 @@
+[
+  {
+    "key": "loc-hospital-bournemouth",
+    "roles": [
+      "InventorySupply",
+      "ProductDistribution"
+    ],
+    "geoLocation": {
+      "type": "Point",
+      "coordinates": [
+        -1.87,
+        50.74
+      ]
+    },
+    "name": {
+      "en-GB": "Nuffield Health Bournemouth Hospital"
+    },
+    "custom": {
+      "type": {
+        "typeId": "type",
+        "key": "nh-location"
+      },
+      "fields": {
+        "locationType": "hospital",
+        "town": "Bournemouth",
+        "region": "south-west",
+        "pricingRegion": "outside-london",
+        "timezone": "Europe/London",
+        "calendarResourceId": "cal-bournemouth",
+        "url": "https://www.nuffieldhealth.com/hospitals/bournemouth",
+        "addressTodo": true,
+        "geoApprox": true
+      }
+    }
+  },
+  {
+    "key": "loc-hospital-brentwood",
+    "roles": [
+      "InventorySupply",
+      "ProductDistribution"
+    ],
+    "geoLocation": {
+      "type": "Point",
+      "coordinates": [
+        0.3,
+        51.62
+      ]
+    },
+    "name": {
+      "en-GB": "Nuffield Health Brentwood Hospital"
+    },
+    "custom": {
+      "type": {
+        "typeId": "type",
+        "key": "nh-location"
+      },
+      "fields": {
+        "locationType": "hospital",
+        "town": "Brentwood",
+        "region": "east",
+        "pricingRegion": "outside-london",
+        "timezone": "Europe/London",
+        "calendarResourceId": "cal-brentwood",
+        "url": "https://www.nuffieldhealth.com/hospitals/brentwood",
+        "addressTodo": true,
+        "geoApprox": true
+      }
+    }
+  },
+  {
+    "key": "loc-hospital-brighton",
+    "roles": [
+      "InventorySupply",
+      "ProductDistribution"
+    ],
+    "geoLocation": {
+      "type": "Point",
+      "coordinates": [
+        -0.14,
+        50.84
+      ]
+    },
+    "name": {
+      "en-GB": "Nuffield Health Brighton Hospital"
+    },
+    "custom": {
+      "type": {
+        "typeId": "type",
+        "key": "nh-location"
+      },
+      "fields": {
+        "locationType": "hospital",
+        "town": "Brighton",
+        "region": "south-east",
+        "pricingRegion": "outside-london",
+        "timezone": "Europe/London",
+        "calendarResourceId": "cal-brighton",
+        "url": "https://www.nuffieldhealth.com/hospitals/brighton",
+        "addressTodo": true,
+        "geoApprox": true
+      }
+    }
+  },
+  {
+    "key": "loc-hospital-bristol",
+    "roles": [
+      "InventorySupply",
+      "ProductDistribution"
+    ],
+    "geoLocation": {
+      "type": "Point",
+      "coordinates": [
+        -2.62,
+        51.46
+      ]
+    },
+    "name": {
+      "en-GB": "Nuffield Health Bristol Hospital"
+    },
+    "custom": {
+      "type": {
+        "typeId": "type",
+        "key": "nh-location"
+      },
+      "fields": {
+        "locationType": "hospital",
+        "town": "Clifton, Bristol",
+        "region": "south-west",
+        "pricingRegion": "outside-london",
+        "timezone": "Europe/London",
+        "calendarResourceId": "cal-bristol",
+        "url": "https://www.nuffieldhealth.com/hospitals/bristol",
+        "addressTodo": true,
+        "geoApprox": true
+      }
+    }
+  },
+  {
+    "key": "loc-hospital-cambridge",
+    "roles": [
+      "InventorySupply",
+      "ProductDistribution"
+    ],
+    "geoLocation": {
+      "type": "Point",
+      "coordinates": [
+        0.15,
+        52.19
+      ]
+    },
+    "name": {
+      "en-GB": "Nuffield Health Cambridge Hospital"
+    },
+    "custom": {
+      "type": {
+        "typeId": "type",
+        "key": "nh-location"
+      },
+      "fields": {
+        "locationType": "hospital",
+        "town": "Cambridge",
+        "region": "east",
+        "pricingRegion": "outside-london",
+        "timezone": "Europe/London",
+        "calendarResourceId": "cal-cambridge",
+        "url": "https://www.nuffieldhealth.com/hospitals/cambridge",
+        "addressTodo": true,
+        "geoApprox": true
+      }
+    }
+  },
+  {
+    "key": "loc-hospital-cardiff-and-vale",
+    "roles": [
+      "InventorySupply",
+      "ProductDistribution"
+    ],
+    "geoLocation": {
+      "type": "Point",
+      "coordinates": [
+        -3.18,
+        51.48
+      ]
+    },
+    "name": {
+      "en-GB": "Nuffield Health Cardiff and Vale Hospital"
+    },
+    "custom": {
+      "type": {
+        "typeId": "type",
+        "key": "nh-location"
+      },
+      "fields": {
+        "locationType": "hospital",
+        "town": "Cardiff",
+        "region": "wales",
+        "pricingRegion": "outside-london",
+        "timezone": "Europe/London",
+        "calendarResourceId": "cal-cardiff-and-vale",
+        "url": "https://www.nuffieldhealth.com/hospitals/cardiff-and-vale",
+        "addressTodo": true,
+        "geoApprox": true
+      }
+    }
+  },
+  {
+    "key": "loc-hospital-cheltenham",
+    "roles": [
+      "InventorySupply",
+      "ProductDistribution"
+    ],
+    "geoLocation": {
+      "type": "Point",
+      "coordinates": [
+        -2.07,
+        51.9
+      ]
+    },
+    "name": {
+      "en-GB": "Nuffield Health Cheltenham Hospital"
+    },
+    "custom": {
+      "type": {
+        "typeId": "type",
+        "key": "nh-location"
+      },
+      "fields": {
+        "locationType": "hospital",
+        "town": "Cheltenham",
+        "region": "south-west",
+        "pricingRegion": "outside-london",
+        "timezone": "Europe/London",
+        "calendarResourceId": "cal-cheltenham",
+        "url": "https://www.nuffieldhealth.com/hospitals/cheltenham",
+        "addressTodo": true,
+        "geoApprox": true
+      }
+    }
+  },
+  {
+    "key": "loc-hospital-chester",
+    "roles": [
+      "InventorySupply",
+      "ProductDistribution"
+    ],
+    "geoLocation": {
+      "type": "Point",
+      "coordinates": [
+        -2.89,
+        53.19
+      ]
+    },
+    "name": {
+      "en-GB": "Nuffield Health Chester Hospital"
+    },
+    "custom": {
+      "type": {
+        "typeId": "type",
+        "key": "nh-location"
+      },
+      "fields": {
+        "locationType": "hospital",
+        "town": "Chester",
+        "region": "north-west",
+        "pricingRegion": "outside-london",
+        "timezone": "Europe/London",
+        "calendarResourceId": "cal-chester",
+        "url": "https://www.nuffieldhealth.com/hospitals/chester",
+        "addressTodo": true,
+        "geoApprox": true
+      }
+    }
+  },
+  {
+    "key": "loc-hospital-chichester",
+    "roles": [
+      "InventorySupply",
+      "ProductDistribution"
+    ],
+    "geoLocation": {
+      "type": "Point",
+      "coordinates": [
+        -0.78,
+        50.84
+      ]
+    },
+    "name": {
+      "en-GB": "Nuffield Health Chichester Hospital"
+    },
+    "custom": {
+      "type": {
+        "typeId": "type",
+        "key": "nh-location"
+      },
+      "fields": {
+        "locationType": "hospital",
+        "town": "Chichester",
+        "region": "south-east",
+        "pricingRegion": "outside-london",
+        "timezone": "Europe/London",
+        "calendarResourceId": "cal-chichester",
+        "url": "https://www.nuffieldhealth.com/hospitals/chichester",
+        "addressTodo": true,
+        "geoApprox": true
+      }
+    }
+  },
+  {
+    "key": "loc-hospital-derby",
+    "roles": [
+      "InventorySupply",
+      "ProductDistribution"
+    ],
+    "geoLocation": {
+      "type": "Point",
+      "coordinates": [
+        -1.48,
+        52.92
+      ]
+    },
+    "name": {
+      "en-GB": "Nuffield Health Derby Hospital"
+    },
+    "custom": {
+      "type": {
+        "typeId": "type",
+        "key": "nh-location"
+      },
+      "fields": {
+        "locationType": "hospital",
+        "town": "Derby",
+        "region": "midlands",
+        "pricingRegion": "outside-london",
+        "timezone": "Europe/London",
+        "calendarResourceId": "cal-derby",
+        "url": "https://www.nuffieldhealth.com/hospitals/derby",
+        "addressTodo": true,
+        "geoApprox": true
+      }
+    }
+  },
+  {
+    "key": "loc-hospital-exeter",
+    "roles": [
+      "InventorySupply",
+      "ProductDistribution"
+    ],
+    "geoLocation": {
+      "type": "Point",
+      "coordinates": [
+        -3.53,
+        50.72
+      ]
+    },
+    "name": {
+      "en-GB": "Nuffield Health Exeter Hospital"
+    },
+    "custom": {
+      "type": {
+        "typeId": "type",
+        "key": "nh-location"
+      },
+      "fields": {
+        "locationType": "hospital",
+        "town": "Exeter",
+        "region": "south-west",
+        "pricingRegion": "outside-london",
+        "timezone": "Europe/London",
+        "calendarResourceId": "cal-exeter",
+        "url": "https://www.nuffieldhealth.com/hospitals/exeter",
+        "addressTodo": true,
+        "geoApprox": true
+      }
+    }
+  },
+  {
+    "key": "loc-hospital-glasgow",
+    "roles": [
+      "InventorySupply",
+      "ProductDistribution"
+    ],
+    "geoLocation": {
+      "type": "Point",
+      "coordinates": [
+        -4.25,
+        55.86
+      ]
+    },
+    "name": {
+      "en-GB": "Nuffield Health Glasgow Hospital"
+    },
+    "custom": {
+      "type": {
+        "typeId": "type",
+        "key": "nh-location"
+      },
+      "fields": {
+        "locationType": "hospital",
+        "town": "Glasgow",
+        "region": "scotland",
+        "pricingRegion": "outside-london",
+        "timezone": "Europe/London",
+        "calendarResourceId": "cal-glasgow",
+        "url": "https://www.nuffieldhealth.com/hospitals/glasgow",
+        "addressTodo": true,
+        "geoApprox": true
+      }
+    }
+  },
+  {
+    "key": "loc-hospital-guildford",
+    "roles": [
+      "InventorySupply",
+      "ProductDistribution"
+    ],
+    "geoLocation": {
+      "type": "Point",
+      "coordinates": [
+        -0.57,
+        51.24
+      ]
+    },
+    "name": {
+      "en-GB": "Nuffield Health Guildford Hospital"
+    },
+    "custom": {
+      "type": {
+        "typeId": "type",
+        "key": "nh-location"
+      },
+      "fields": {
+        "locationType": "hospital",
+        "town": "Guildford",
+        "region": "south-east",
+        "pricingRegion": "outside-london",
+        "timezone": "Europe/London",
+        "calendarResourceId": "cal-guildford",
+        "url": "https://www.nuffieldhealth.com/hospitals/guildford",
+        "addressTodo": true,
+        "geoApprox": true
+      }
+    }
+  },
+  {
+    "key": "loc-hospital-haywards-heath",
+    "roles": [
+      "InventorySupply",
+      "ProductDistribution"
+    ],
+    "geoLocation": {
+      "type": "Point",
+      "coordinates": [
+        -0.1,
+        51
+      ]
+    },
+    "name": {
+      "en-GB": "Nuffield Health Haywards Heath Hospital"
+    },
+    "custom": {
+      "type": {
+        "typeId": "type",
+        "key": "nh-location"
+      },
+      "fields": {
+        "locationType": "hospital",
+        "town": "Haywards Heath",
+        "region": "south-east",
+        "pricingRegion": "outside-london",
+        "timezone": "Europe/London",
+        "calendarResourceId": "cal-haywards-heath",
+        "url": "https://www.nuffieldhealth.com/hospitals/haywards-heath",
+        "addressTodo": true,
+        "geoApprox": true
+      }
+    }
+  },
+  {
+    "key": "loc-hospital-hereford",
+    "roles": [
+      "InventorySupply",
+      "ProductDistribution"
+    ],
+    "geoLocation": {
+      "type": "Point",
+      "coordinates": [
+        -2.72,
+        52.06
+      ]
+    },
+    "name": {
+      "en-GB": "Nuffield Health Hereford Hospital"
+    },
+    "custom": {
+      "type": {
+        "typeId": "type",
+        "key": "nh-location"
+      },
+      "fields": {
+        "locationType": "hospital",
+        "town": "Hereford",
+        "region": "midlands",
+        "pricingRegion": "outside-london",
+        "timezone": "Europe/London",
+        "calendarResourceId": "cal-hereford",
+        "url": "https://www.nuffieldhealth.com/hospitals/hereford",
+        "addressTodo": true,
+        "geoApprox": true
+      }
+    }
+  },
+  {
+    "key": "loc-hospital-ipswich",
+    "roles": [
+      "InventorySupply",
+      "ProductDistribution"
+    ],
+    "geoLocation": {
+      "type": "Point",
+      "coordinates": [
+        1.15,
+        52.06
+      ]
+    },
+    "name": {
+      "en-GB": "Nuffield Health Ipswich Hospital"
+    },
+    "custom": {
+      "type": {
+        "typeId": "type",
+        "key": "nh-location"
+      },
+      "fields": {
+        "locationType": "hospital",
+        "town": "Ipswich",
+        "region": "east",
+        "pricingRegion": "outside-london",
+        "timezone": "Europe/London",
+        "calendarResourceId": "cal-ipswich",
+        "url": "https://www.nuffieldhealth.com/hospitals/ipswich",
+        "addressTodo": true,
+        "geoApprox": true
+      }
+    }
+  },
+  {
+    "key": "loc-hospital-leeds",
+    "roles": [
+      "InventorySupply",
+      "ProductDistribution"
+    ],
+    "geoLocation": {
+      "type": "Point",
+      "coordinates": [
+        -1.55,
+        53.8
+      ]
+    },
+    "name": {
+      "en-GB": "Nuffield Health Leeds Hospital"
+    },
+    "custom": {
+      "type": {
+        "typeId": "type",
+        "key": "nh-location"
+      },
+      "fields": {
+        "locationType": "hospital",
+        "town": "Leeds",
+        "region": "north",
+        "pricingRegion": "outside-london",
+        "timezone": "Europe/London",
+        "calendarResourceId": "cal-leeds",
+        "url": "https://www.nuffieldhealth.com/hospitals/leeds",
+        "addressTodo": true,
+        "geoApprox": true
+      }
+    }
+  },
+  {
+    "key": "loc-hospital-leicester",
+    "roles": [
+      "InventorySupply",
+      "ProductDistribution"
+    ],
+    "geoLocation": {
+      "type": "Point",
+      "coordinates": [
+        -1.13,
+        52.64
+      ]
+    },
+    "name": {
+      "en-GB": "Nuffield Health Leicester Hospital"
+    },
+    "custom": {
+      "type": {
+        "typeId": "type",
+        "key": "nh-location"
+      },
+      "fields": {
+        "locationType": "hospital",
+        "town": "Leicester",
+        "region": "midlands",
+        "pricingRegion": "outside-london",
+        "timezone": "Europe/London",
+        "calendarResourceId": "cal-leicester",
+        "url": "https://www.nuffieldhealth.com/hospitals/leicester",
+        "addressTodo": true,
+        "geoApprox": true
+      }
+    }
+  },
+  {
+    "key": "loc-diagnostic-manchester-diagnostic-suite",
+    "roles": [
+      "InventorySupply",
+      "ProductDistribution"
+    ],
+    "geoLocation": {
+      "type": "Point",
+      "coordinates": [
+        -2.24,
+        53.48
+      ]
+    },
+    "name": {
+      "en-GB": "Nuffield Health Manchester Diagnostic Suite"
+    },
+    "custom": {
+      "type": {
+        "typeId": "type",
+        "key": "nh-location"
+      },
+      "fields": {
+        "locationType": "diagnostic-suite",
+        "town": "Manchester",
+        "region": "north-west",
+        "pricingRegion": "outside-london",
+        "timezone": "Europe/London",
+        "calendarResourceId": "cal-manchester-diagnostic-suite",
+        "url": "https://www.nuffieldhealth.com/hospitals/manchester-diagnostic-suite",
+        "addressTodo": true,
+        "geoApprox": true
+      }
+    }
+  },
+  {
+    "key": "loc-diagnostic-manchester-institute-of-health-and-performance",
+    "roles": [
+      "InventorySupply",
+      "ProductDistribution"
+    ],
+    "geoLocation": {
+      "type": "Point",
+      "coordinates": [
+        -2.2,
+        53.46
+      ]
+    },
+    "name": {
+      "en-GB": "Nuffield Health Manchester Institute of Health & Performance"
+    },
+    "custom": {
+      "type": {
+        "typeId": "type",
+        "key": "nh-location"
+      },
+      "fields": {
+        "locationType": "diagnostic-suite",
+        "town": "Manchester",
+        "region": "north-west",
+        "pricingRegion": "outside-london",
+        "timezone": "Europe/London",
+        "calendarResourceId": "cal-manchester-institute-of-health-and-performance",
+        "url": "https://www.nuffieldhealth.com/mihp",
+        "addressTodo": true,
+        "geoApprox": true
+      }
+    }
+  },
+  {
+    "key": "loc-hospital-newcastle-upon-tyne",
+    "roles": [
+      "InventorySupply",
+      "ProductDistribution"
+    ],
+    "geoLocation": {
+      "type": "Point",
+      "coordinates": [
+        -1.61,
+        54.98
+      ]
+    },
+    "name": {
+      "en-GB": "Nuffield Health Newcastle upon Tyne Hospital"
+    },
+    "custom": {
+      "type": {
+        "typeId": "type",
+        "key": "nh-location"
+      },
+      "fields": {
+        "locationType": "hospital",
+        "town": "Newcastle upon Tyne",
+        "region": "north",
+        "pricingRegion": "outside-london",
+        "timezone": "Europe/London",
+        "calendarResourceId": "cal-newcastle-upon-tyne",
+        "url": "https://www.nuffieldhealth.com/hospitals/newcastle-upon-tyne",
+        "addressTodo": true,
+        "geoApprox": true
+      }
+    }
+  },
+  {
+    "key": "loc-hospital-north-staffordshire",
+    "roles": [
+      "InventorySupply",
+      "ProductDistribution"
+    ],
+    "geoLocation": {
+      "type": "Point",
+      "coordinates": [
+        -2.23,
+        53.01
+      ]
+    },
+    "name": {
+      "en-GB": "Nuffield Health North Staffordshire Hospital"
+    },
+    "custom": {
+      "type": {
+        "typeId": "type",
+        "key": "nh-location"
+      },
+      "fields": {
+        "locationType": "hospital",
+        "town": "Newcastle-under-Lyme",
+        "region": "midlands",
+        "pricingRegion": "outside-london",
+        "timezone": "Europe/London",
+        "calendarResourceId": "cal-north-staffordshire",
+        "url": "https://www.nuffieldhealth.com/hospitals/north-staffordshire",
+        "addressTodo": true,
+        "geoApprox": true
+      }
+    }
+  },
+  {
+    "key": "loc-hospital-oxford",
+    "roles": [
+      "InventorySupply",
+      "ProductDistribution"
+    ],
+    "geoLocation": {
+      "type": "Point",
+      "coordinates": [
+        -1.21,
+        51.76
+      ]
+    },
+    "name": {
+      "en-GB": "Nuffield Health Oxford Hospital"
+    },
+    "custom": {
+      "type": {
+        "typeId": "type",
+        "key": "nh-location"
+      },
+      "fields": {
+        "locationType": "hospital",
+        "town": "Headington, Oxford",
+        "region": "south-east",
+        "pricingRegion": "outside-london",
+        "timezone": "Europe/London",
+        "calendarResourceId": "cal-oxford",
+        "url": "https://www.nuffieldhealth.com/hospitals/oxford",
+        "addressTodo": true,
+        "geoApprox": true
+      }
+    }
+  },
+  {
+    "key": "loc-hospital-plymouth",
+    "roles": [
+      "InventorySupply",
+      "ProductDistribution"
+    ],
+    "geoLocation": {
+      "type": "Point",
+      "coordinates": [
+        -4.14,
+        50.38
+      ]
+    },
+    "name": {
+      "en-GB": "Nuffield Health Plymouth Hospital"
+    },
+    "custom": {
+      "type": {
+        "typeId": "type",
+        "key": "nh-location"
+      },
+      "fields": {
+        "locationType": "hospital",
+        "town": "Plymouth",
+        "region": "south-west",
+        "pricingRegion": "outside-london",
+        "timezone": "Europe/London",
+        "calendarResourceId": "cal-plymouth",
+        "url": "https://www.nuffieldhealth.com/hospitals/plymouth",
+        "addressTodo": true,
+        "geoApprox": true
+      }
+    }
+  },
+  {
+    "key": "loc-hospital-shrewsbury",
+    "roles": [
+      "InventorySupply",
+      "ProductDistribution"
+    ],
+    "geoLocation": {
+      "type": "Point",
+      "coordinates": [
+        -2.75,
+        52.71
+      ]
+    },
+    "name": {
+      "en-GB": "Nuffield Health Shrewsbury Hospital"
+    },
+    "custom": {
+      "type": {
+        "typeId": "type",
+        "key": "nh-location"
+      },
+      "fields": {
+        "locationType": "hospital",
+        "town": "Shrewsbury",
+        "region": "midlands",
+        "pricingRegion": "outside-london",
+        "timezone": "Europe/London",
+        "calendarResourceId": "cal-shrewsbury",
+        "url": "https://www.nuffieldhealth.com/hospitals/shrewsbury",
+        "addressTodo": true,
+        "geoApprox": true
+      }
+    }
+  },
+  {
+    "key": "loc-hospital-taunton",
+    "roles": [
+      "InventorySupply",
+      "ProductDistribution"
+    ],
+    "geoLocation": {
+      "type": "Point",
+      "coordinates": [
+        -3.1,
+        51.02
+      ]
+    },
+    "name": {
+      "en-GB": "Nuffield Health Taunton Hospital"
+    },
+    "custom": {
+      "type": {
+        "typeId": "type",
+        "key": "nh-location"
+      },
+      "fields": {
+        "locationType": "hospital",
+        "town": "Taunton",
+        "region": "south-west",
+        "pricingRegion": "outside-london",
+        "timezone": "Europe/London",
+        "calendarResourceId": "cal-taunton",
+        "url": "https://www.nuffieldhealth.com/hospitals/taunton",
+        "addressTodo": true,
+        "geoApprox": true
+      }
+    }
+  },
+  {
+    "key": "loc-hospital-tees",
+    "roles": [
+      "InventorySupply",
+      "ProductDistribution"
+    ],
+    "geoLocation": {
+      "type": "Point",
+      "coordinates": [
+        -1.31,
+        54.58
+      ]
+    },
+    "name": {
+      "en-GB": "Nuffield Health Tees Hospital"
+    },
+    "custom": {
+      "type": {
+        "typeId": "type",
+        "key": "nh-location"
+      },
+      "fields": {
+        "locationType": "hospital",
+        "town": "Norton, Stockton on Tees",
+        "region": "north",
+        "pricingRegion": "outside-london",
+        "timezone": "Europe/London",
+        "calendarResourceId": "cal-tees",
+        "url": "https://www.nuffieldhealth.com/hospitals/tees",
+        "addressTodo": true,
+        "geoApprox": true
+      }
+    }
+  },
+  {
+    "key": "loc-hospital-tunbridge-wells",
+    "roles": [
+      "InventorySupply",
+      "ProductDistribution"
+    ],
+    "geoLocation": {
+      "type": "Point",
+      "coordinates": [
+        0.26,
+        51.13
+      ]
+    },
+    "name": {
+      "en-GB": "Nuffield Health Tunbridge Wells Hospital"
+    },
+    "custom": {
+      "type": {
+        "typeId": "type",
+        "key": "nh-location"
+      },
+      "fields": {
+        "locationType": "hospital",
+        "town": "Tunbridge Wells",
+        "region": "south-east",
+        "pricingRegion": "outside-london",
+        "timezone": "Europe/London",
+        "calendarResourceId": "cal-tunbridge-wells",
+        "url": "https://www.nuffieldhealth.com/hospitals/tunbridge-wells",
+        "addressTodo": true,
+        "geoApprox": true
+      }
+    }
+  },
+  {
+    "key": "loc-hospital-warwickshire",
+    "roles": [
+      "InventorySupply",
+      "ProductDistribution"
+    ],
+    "geoLocation": {
+      "type": "Point",
+      "coordinates": [
+        -1.53,
+        52.29
+      ]
+    },
+    "name": {
+      "en-GB": "Nuffield Health Warwickshire Hospital"
+    },
+    "custom": {
+      "type": {
+        "typeId": "type",
+        "key": "nh-location"
+      },
+      "fields": {
+        "locationType": "hospital",
+        "town": "Leamington Spa",
+        "region": "midlands",
+        "pricingRegion": "outside-london",
+        "timezone": "Europe/London",
+        "calendarResourceId": "cal-warwickshire",
+        "url": "https://www.nuffieldhealth.com/hospitals/warwickshire",
+        "addressTodo": true,
+        "geoApprox": true
+      }
+    }
+  },
+  {
+    "key": "loc-hospital-wessex",
+    "roles": [
+      "InventorySupply",
+      "ProductDistribution"
+    ],
+    "geoLocation": {
+      "type": "Point",
+      "coordinates": [
+        -1.37,
+        50.98
+      ]
+    },
+    "name": {
+      "en-GB": "Nuffield Health Wessex Hospital"
+    },
+    "custom": {
+      "type": {
+        "typeId": "type",
+        "key": "nh-location"
+      },
+      "fields": {
+        "locationType": "hospital",
+        "town": "Chandlers Ford, Eastleigh",
+        "region": "south-east",
+        "pricingRegion": "outside-london",
+        "timezone": "Europe/London",
+        "calendarResourceId": "cal-wessex",
+        "url": "https://www.nuffieldhealth.com/hospitals/wessex",
+        "addressTodo": true,
+        "geoApprox": true
+      }
+    }
+  },
+  {
+    "key": "loc-hospital-woking",
+    "roles": [
+      "InventorySupply",
+      "ProductDistribution"
+    ],
+    "geoLocation": {
+      "type": "Point",
+      "coordinates": [
+        -0.56,
+        51.32
+      ]
+    },
+    "name": {
+      "en-GB": "Nuffield Health Woking Hospital"
+    },
+    "custom": {
+      "type": {
+        "typeId": "type",
+        "key": "nh-location"
+      },
+      "fields": {
+        "locationType": "hospital",
+        "town": "Woking",
+        "region": "south-east",
+        "pricingRegion": "outside-london",
+        "timezone": "Europe/London",
+        "calendarResourceId": "cal-woking",
+        "url": "https://www.nuffieldhealth.com/hospitals/woking",
+        "addressTodo": true,
+        "geoApprox": true
+      }
+    }
+  },
+  {
+    "key": "loc-hospital-wolverhampton",
+    "roles": [
+      "InventorySupply",
+      "ProductDistribution"
+    ],
+    "geoLocation": {
+      "type": "Point",
+      "coordinates": [
+        -2.17,
+        52.6
+      ]
+    },
+    "name": {
+      "en-GB": "Nuffield Health Wolverhampton Hospital"
+    },
+    "custom": {
+      "type": {
+        "typeId": "type",
+        "key": "nh-location"
+      },
+      "fields": {
+        "locationType": "hospital",
+        "town": "Tettenhall, Wolverhampton",
+        "region": "midlands",
+        "pricingRegion": "outside-london",
+        "timezone": "Europe/London",
+        "calendarResourceId": "cal-wolverhampton",
+        "url": "https://www.nuffieldhealth.com/hospitals/wolverhampton",
+        "addressTodo": true,
+        "geoApprox": true
+      }
+    }
+  },
+  {
+    "key": "loc-hospital-york",
+    "roles": [
+      "InventorySupply",
+      "ProductDistribution"
+    ],
+    "geoLocation": {
+      "type": "Point",
+      "coordinates": [
+        -1.08,
+        53.96
+      ]
+    },
+    "name": {
+      "en-GB": "Nuffield Health York Hospital"
+    },
+    "custom": {
+      "type": {
+        "typeId": "type",
+        "key": "nh-location"
+      },
+      "fields": {
+        "locationType": "hospital",
+        "town": "York",
+        "region": "north",
+        "pricingRegion": "outside-london",
+        "timezone": "Europe/London",
+        "calendarResourceId": "cal-york",
+        "url": "https://www.nuffieldhealth.com/hospitals/york",
+        "addressTodo": true,
+        "geoApprox": true
+      }
+    }
+  },
+  {
+    "key": "loc-hospital-parkside",
+    "roles": [
+      "InventorySupply",
+      "ProductDistribution"
+    ],
+    "geoLocation": {
+      "type": "Point",
+      "coordinates": [
+        -0.22,
+        51.42
+      ]
+    },
+    "name": {
+      "en-GB": "Nuffield Health Parkside Hospital"
+    },
+    "custom": {
+      "type": {
+        "typeId": "type",
+        "key": "nh-location"
+      },
+      "fields": {
+        "locationType": "hospital",
+        "town": "Wimbledon, London",
+        "region": "london",
+        "pricingRegion": "london",
+        "timezone": "Europe/London",
+        "calendarResourceId": "cal-parkside",
+        "url": "https://www.nuffieldhealth.com/hospitals/parkside",
+        "addressTodo": true,
+        "geoApprox": true
+      }
+    }
+  },
+  {
+    "key": "loc-hospital-highgate",
+    "roles": [
+      "InventorySupply",
+      "ProductDistribution"
+    ],
+    "geoLocation": {
+      "type": "Point",
+      "coordinates": [
+        -0.15,
+        51.57
+      ]
+    },
+    "name": {
+      "en-GB": "Nuffield Health Highgate Hospital"
+    },
+    "custom": {
+      "type": {
+        "typeId": "type",
+        "key": "nh-location"
+      },
+      "fields": {
+        "locationType": "hospital",
+        "town": "Highgate, London",
+        "region": "london",
+        "pricingRegion": "london",
+        "timezone": "Europe/London",
+        "calendarResourceId": "cal-highgate",
+        "url": "https://www.nuffieldhealth.com/hospitals/highgate",
+        "addressTodo": true,
+        "geoApprox": true
+      }
+    }
+  },
+  {
+    "key": "loc-hospital-edinburgh",
+    "roles": [
+      "InventorySupply",
+      "ProductDistribution"
+    ],
+    "geoLocation": {
+      "type": "Point",
+      "coordinates": [
+        -3.19,
+        55.95
+      ]
+    },
+    "name": {
+      "en-GB": "Nuffield Health Edinburgh Hospital"
+    },
+    "custom": {
+      "type": {
+        "typeId": "type",
+        "key": "nh-location"
+      },
+      "fields": {
+        "locationType": "hospital",
+        "town": "Edinburgh",
+        "region": "scotland",
+        "pricingRegion": "outside-london",
+        "timezone": "Europe/London",
+        "calendarResourceId": "cal-edinburgh",
+        "url": "https://www.nuffieldhealth.com/hospitals/edinburgh",
+        "addressTodo": true,
+        "geoApprox": true
+      }
+    }
+  },
+  {
+    "key": "loc-hospital-the-holly",
+    "roles": [
+      "InventorySupply",
+      "ProductDistribution"
+    ],
+    "geoLocation": {
+      "type": "Point",
+      "coordinates": [
+        0.04,
+        51.62
+      ]
+    },
+    "name": {
+      "en-GB": "Nuffield Health The Holly Hospital"
+    },
+    "custom": {
+      "type": {
+        "typeId": "type",
+        "key": "nh-location"
+      },
+      "fields": {
+        "locationType": "hospital",
+        "town": "Buckhurst Hill, Essex",
+        "region": "london",
+        "pricingRegion": "london",
+        "timezone": "Europe/London",
+        "calendarResourceId": "cal-the-holly",
+        "url": "https://www.nuffieldhealth.com/hospitals/the-holly",
+        "addressTodo": true,
+        "geoApprox": true
+      }
+    }
+  },
+  {
+    "key": "loc-medical-centre-moorgate",
+    "roles": [
+      "InventorySupply",
+      "ProductDistribution"
+    ],
+    "geoLocation": {
+      "type": "Point",
+      "coordinates": [
+        -0.087,
+        51.519
+      ]
+    },
+    "name": {
+      "en-GB": "Nuffield Health Moorgate Medical Centre"
+    },
+    "custom": {
+      "type": {
+        "typeId": "type",
+        "key": "nh-location"
+      },
+      "fields": {
+        "locationType": "medical-centre",
+        "town": "London",
+        "region": "london",
+        "pricingRegion": "london",
+        "timezone": "Europe/London",
+        "calendarResourceId": "cal-moorgate",
+        "addressTodo": true,
+        "geoApprox": true
+      }
+    }
+  },
+  {
+    "key": "loc-medical-centre-barbican",
+    "roles": [
+      "InventorySupply",
+      "ProductDistribution"
+    ],
+    "geoLocation": {
+      "type": "Point",
+      "coordinates": [
+        -0.094,
+        51.52
+      ]
+    },
+    "name": {
+      "en-GB": "Nuffield Health Barbican Medical Centre"
+    },
+    "custom": {
+      "type": {
+        "typeId": "type",
+        "key": "nh-location"
+      },
+      "fields": {
+        "locationType": "medical-centre",
+        "town": "London",
+        "region": "london",
+        "pricingRegion": "london",
+        "timezone": "Europe/London",
+        "calendarResourceId": "cal-barbican",
+        "addressTodo": true,
+        "geoApprox": true
+      }
+    }
+  },
+  {
+    "key": "loc-medical-centre-west-end-queen-anne-street",
+    "roles": [
+      "InventorySupply",
+      "ProductDistribution"
+    ],
+    "geoLocation": {
+      "type": "Point",
+      "coordinates": [
+        -0.148,
+        51.519
+      ]
+    },
+    "name": {
+      "en-GB": "Nuffield Health West End (Queen Anne Street) Medical Centre"
+    },
+    "custom": {
+      "type": {
+        "typeId": "type",
+        "key": "nh-location"
+      },
+      "fields": {
+        "locationType": "medical-centre",
+        "town": "London",
+        "region": "london",
+        "pricingRegion": "london",
+        "timezone": "Europe/London",
+        "calendarResourceId": "cal-west-end-queen-anne-street",
+        "addressTodo": true,
+        "geoApprox": true
+      }
+    }
+  },
+  {
+    "key": "loc-gym-city",
+    "roles": [
+      "InventorySupply",
+      "ProductDistribution"
+    ],
+    "geoLocation": {
+      "type": "Point",
+      "coordinates": [
+        -0.083,
+        51.514
+      ]
+    },
+    "name": {
+      "en-GB": "Nuffield Health City Fitness & Wellbeing Gym"
+    },
+    "custom": {
+      "type": {
+        "typeId": "type",
+        "key": "nh-location"
+      },
+      "fields": {
+        "locationType": "gym",
+        "town": "London",
+        "region": "london",
+        "pricingRegion": "london",
+        "timezone": "Europe/London",
+        "calendarResourceId": "cal-city",
+        "addressTodo": true,
+        "geoApprox": true
+      }
+    }
+  }
+]

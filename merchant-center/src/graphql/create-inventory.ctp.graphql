@@ -1,0 +1,6 @@
+mutation CreateInventoryEntry($draft: InventoryEntryDraft!) {
+  createInventoryEntry(draft: $draft) {
+    id
+    version
+  }
+}

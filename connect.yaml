@@ -1,0 +1,20 @@
+# Deploys the Merchant Center custom application in ./merchant-center via commercetools Connect.
+# Register the app in Merchant Center first (placeholder URL) to get CUSTOM_APPLICATION_ID,
+# then replace the URL with the deployed one. See docs/04-merchant-center-app.md.
+deployAs:
+  - name: merchant-center
+    applicationType: merchant-center-custom-application
+    configuration:
+      standardConfiguration:
+        - key: CUSTOM_APPLICATION_ID
+          description: The Custom Application ID registered in Merchant Center
+          required: true
+        - key: ENTRY_POINT_URI_PATH
+          description: The application entry point URI path
+          default: nuffield-booking
+        - key: CLOUD_IDENTIFIER
+          description: The cloud identifier of the project region
+          default: gcp-eu
+        - key: CALENDAR_API_URL
+          description: Base URL of the calendar service the app reads availability from
+          required: true

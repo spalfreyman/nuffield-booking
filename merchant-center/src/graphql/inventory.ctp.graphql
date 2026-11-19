@@ -1,0 +1,16 @@
+query Inventory($limit: Int!, $offset: Int!) {
+  inventoryEntries(limit: $limit, offset: $offset) {
+    total
+    results {
+      id
+      version
+      key
+      sku
+      quantityOnStock
+      supplyChannel {
+        id
+        key
+      }
+    }
+  }
+}

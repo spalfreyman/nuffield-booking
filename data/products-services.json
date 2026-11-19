@@ -1,0 +1,123 @@
+{
+  "_note": "Prices in pence (centAmount, GBP). Sourced = nuffieldhealth.com audit 19 Nov 2026. _placeholder = invented for the mock, replace with real tariffs. Audiences: public = no customer group; insurance=cg-insurance; gym=cg-gym-member; business=cg-business.",
+  "categories": [
+    "cat-health-assessments", "cat-physio", "cat-gp", "cat-tests-scans", "cat-consultations", "cat-treatments", "cat-gyms",
+    "cat-tx-orthopaedics","cat-tx-spine","cat-tx-cardiology-vascular","cat-tx-cosmetic-reconstructive","cat-tx-ophthalmology","cat-tx-ent",
+    "cat-tx-urology-prostate","cat-tx-gynaecology-fertility","cat-tx-general-surgery","cat-tx-colorectal","cat-tx-bariatric","cat-tx-oncology",
+    "cat-tx-dermatology","cat-tx-pain-management","cat-tx-dental-maxillofacial","cat-tx-therapies-other"
+  ],
+  "products": [
+    {
+      "key": "ha-360-plus", "productType": "nh-health-assessment", "category": "cat-health-assessments",
+      "name": "360+ Health Assessment", "sku": "NH-HA-360PLUS", "durationMins": 150,
+      "description": "Most in-depth assessment: full health and wellbeing overview with extra focus on cardiovascular health and fitness.",
+      "prices": { "public": 79500, "insurance": 79500, "gym": 71500, "business": 67500 }, "_placeholder": true
+    },
+    {
+      "key": "ha-360", "productType": "nh-health-assessment", "category": "cat-health-assessments",
+      "name": "360 Health Assessment", "sku": "NH-HA-360", "durationMins": 90,
+      "description": "Overview of current health and wellbeing; screens for diabetes, high cholesterol and more.",
+      "prices": { "public": 39500, "insurance": 39500, "gym": 35500, "business": 33500 }, "_placeholder": true
+    },
+    {
+      "key": "ha-lifestyle", "productType": "nh-health-assessment", "category": "cat-health-assessments",
+      "name": "Lifestyle Health Assessment", "sku": "NH-HA-LIFESTYLE", "durationMins": 60,
+      "description": "Weight management, stress, sleep and posture, focused on lifestyle change.",
+      "prices": { "public": 22500, "insurance": 22500, "gym": 19500, "business": 18500 }, "_placeholder": true
+    },
+    {
+      "key": "ha-female", "productType": "nh-health-assessment", "category": "cat-health-assessments",
+      "name": "Female Health Assessment", "sku": "NH-HA-FEMALE", "durationMins": 90,
+      "description": "Women's health with an in-depth doctor consultation.",
+      "prices": { "public": 44500, "insurance": 44500, "gym": 40000, "business": 37500 }, "_placeholder": true
+    },
+
+    {
+      "key": "physio-initial", "productType": "nh-physio", "category": "cat-physio",
+      "name": "Physiotherapy – initial assessment", "sku": "NH-PHYSIO-INIT", "durationMins": 45,
+      "description": "Initial assessment, face-to-face or online. Seen in as little as 24 hours.",
+      "prices": { "public": 7200, "insurance": 7200, "gym": 5760, "business": 6500 },
+      "channelPrices": { "london": { "public": 7900, "insurance": 7900, "gym": 6320, "business": 7100 } },
+      "_source": "nuffieldhealth.com/physiotherapy; gym = 20% off; insurance/business placeholder"
+    },
+    {
+      "key": "physio-followup", "productType": "nh-physio", "category": "cat-physio",
+      "name": "Physiotherapy – follow-up", "sku": "NH-PHYSIO-FU", "durationMins": 30,
+      "description": "Follow-up physiotherapy session.",
+      "prices": { "public": 4900, "insurance": 4900, "gym": 3920, "business": 4400 },
+      "channelPrices": { "london": { "public": 5200, "insurance": 5200, "gym": 4160, "business": 4700 } },
+      "_source": "nuffieldhealth.com/physiotherapy; gym = 20% off; insurance/business placeholder"
+    },
+
+    {
+      "key": "gp-standard", "productType": "nh-gp", "category": "cat-gp",
+      "name": "Private GP – 20 minute appointment", "sku": "NH-GP-20", "durationMins": 20,
+      "description": "Standard private GP consultation. Fees confirmed upfront by clinic.",
+      "prices": { "public": 9500, "insurance": 9500, "gym": 8500, "business": 8000 }, "_placeholder": true
+    },
+    {
+      "key": "gp-extended", "productType": "nh-gp", "category": "cat-gp",
+      "name": "Private GP – 40 minute appointment", "sku": "NH-GP-40", "durationMins": 40,
+      "description": "Extended private GP consultation.",
+      "prices": { "public": 16000, "insurance": 16000, "gym": 14500, "business": 13500 }, "_placeholder": true
+    },
+
+    {
+      "key": "scan-mri", "productType": "nh-diagnostic", "category": "cat-tests-scans",
+      "name": "MRI scan", "sku": "NH-SCAN-MRI", "durationMins": 45, "requiresReferral": true,
+      "description": "MRI imaging. Price varies by body area (single area shown).",
+      "prices": { "public": 39500, "insurance": 0, "gym": 37500, "business": 35000 }, "_placeholder": true
+    },
+    {
+      "key": "scan-ct", "productType": "nh-diagnostic", "category": "cat-tests-scans",
+      "name": "CT scan", "sku": "NH-SCAN-CT", "durationMins": 30, "requiresReferral": true,
+      "description": "CT (CAT) scan.",
+      "prices": { "public": 29500, "insurance": 0, "gym": 28000, "business": 26500 }, "_placeholder": true
+    },
+    {
+      "key": "scan-xray", "productType": "nh-diagnostic", "category": "cat-tests-scans",
+      "name": "X-ray", "sku": "NH-SCAN-XRAY", "durationMins": 15, "requiresReferral": false,
+      "description": "Digital X-ray.",
+      "prices": { "public": 8500, "insurance": 0, "gym": 7500, "business": 7000 }, "_placeholder": true
+    },
+    {
+      "key": "test-blood", "productType": "nh-diagnostic", "category": "cat-tests-scans",
+      "name": "Blood test (Pathology Direct)", "sku": "NH-TEST-BLOOD", "durationMins": 15, "requiresReferral": false,
+      "description": "Blood test panel via Pathology Direct.",
+      "prices": { "public": 4500, "insurance": 0, "gym": 4000, "business": 3800 }, "_placeholder": true
+    },
+
+    {
+      "key": "consult-initial", "productType": "nh-consultation", "category": "cat-consultations",
+      "name": "Initial consultant consultation", "sku": "NH-CONSULT-INIT", "durationMins": 30,
+      "description": "First consultation with a consultant. Specialty chosen in journey; insurers cover with authorisation code.",
+      "prices": { "public": 25000, "insurance": 0, "gym": 25000, "business": 23000 }, "_placeholder": true
+    },
+
+    {
+      "key": "gym-single", "productType": "nh-gym-membership", "category": "cat-gyms",
+      "name": "Gym membership – single club", "sku": "NH-GYM-SINGLE", "bookingMode": "purchase", "termMonths": 12,
+      "description": "12-month membership, monthly price by club (from £68).",
+      "prices": { "public": 6800, "insurance": 6800, "gym": 6800, "business": 5800 },
+      "_source": "from £68 pm (nuffieldhealth.com/gyms/membership); business placeholder; insurer discounts (Vitality up to 50%) via own groups"
+    },
+    {
+      "key": "gym-multi", "productType": "nh-gym-membership", "category": "cat-gyms",
+      "name": "Gym membership – multi-gym access", "sku": "NH-GYM-MULTI", "bookingMode": "purchase", "termMonths": 12,
+      "description": "Access to 105+ gyms. Top of range £163 pm at City sites.",
+      "prices": { "public": 16300, "insurance": 16300, "gym": 16300, "business": 13800 }, "_placeholder": true
+    },
+    {
+      "key": "gym-tour", "productType": "nh-gym-service", "category": "cat-gyms",
+      "name": "Book a gym tour", "sku": "NH-GYM-TOUR", "durationMins": 30,
+      "description": "Free tour of your local club.",
+      "prices": { "public": 0, "insurance": 0, "gym": 0, "business": 0 }
+    },
+    {
+      "key": "gym-pt", "productType": "nh-gym-service", "category": "cat-gyms",
+      "name": "Personal training session", "sku": "NH-GYM-PT", "durationMins": 60,
+      "description": "1:1 personal training.",
+      "prices": { "public": 6500, "insurance": 6500, "gym": 5500, "business": 5200 }, "_placeholder": true
+    }
+  ]
+}
