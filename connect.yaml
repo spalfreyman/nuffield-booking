@@ -11,9 +11,11 @@ deployAs:
           required: true
         - key: ENTRY_POINT_URI_PATH
           description: The application entry point URI path
+          required: true
           default: nuffield-booking
         - key: CLOUD_IDENTIFIER
           description: The cloud identifier of the project region
+          required: true
           default: gcp-eu
         - key: CALENDAR_API_URL
           description: Base URL of the calendar service the app reads availability from
