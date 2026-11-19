@@ -1,0 +1,685 @@
+{
+  "_source": {
+    "blood": "https://www.nuffieldhealth.com/pathology-direct?ref=main-nav (read 2026-11-19)",
+    "imaging": "https://www.nuffieldhealth.com/tests-scans?category=imaging-radiology (read 2026-11-19)",
+    "notes": "Blood: self-pay, GBP, from the live page. Imaging: the site gives no price (confirmed by the hospital after referral), so price is on enquiry; durations are placeholders. MRI, CT and X-ray already exist in products-services.json."
+  },
+  "blood": [
+    {
+      "key": "bt-cereal-panel",
+      "sku": "NH-BT-CEREAL-PANEL",
+      "name": "Cereal Panel",
+      "group": "Allergy",
+      "pricePence": 16600
+    },
+    {
+      "key": "bt-fish-panel",
+      "sku": "NH-BT-FISH-PANEL",
+      "name": "Fish Panel",
+      "group": "Allergy",
+      "pricePence": 13800
+    },
+    {
+      "key": "bt-foods-and-inhalants-panel",
+      "sku": "NH-BT-FOODS-AND-INHALANTS-PANEL",
+      "name": "Foods and Inhalants Panel",
+      "group": "Allergy",
+      "pricePence": 44900
+    },
+    {
+      "key": "bt-foods-panel",
+      "sku": "NH-BT-FOODS-PANEL",
+      "name": "Foods Panel",
+      "group": "Allergy",
+      "pricePence": 25500
+    },
+    {
+      "key": "bt-inhalants-panel",
+      "sku": "NH-BT-INHALANTS-PANEL",
+      "name": "Inhalants Panel",
+      "group": "Allergy",
+      "pricePence": 25500
+    },
+    {
+      "key": "bt-moulds-panel",
+      "sku": "NH-BT-MOULDS-PANEL",
+      "name": "Moulds Panel",
+      "group": "Allergy",
+      "pricePence": 9900
+    },
+    {
+      "key": "bt-nuts-and-seeds-panel",
+      "sku": "NH-BT-NUTS-AND-SEEDS-PANEL",
+      "name": "Nuts and Seeds Panel",
+      "group": "Allergy",
+      "pricePence": 19100
+    },
+    {
+      "key": "bt-alex3-allergy-test",
+      "sku": "NH-BT-ALEX3-ALLERGY-TEST",
+      "name": "ALEX3 Allergy Test",
+      "group": "Allergy",
+      "pricePence": 51700
+    },
+    {
+      "key": "bt-shellfish-panel",
+      "sku": "NH-BT-SHELLFISH-PANEL",
+      "name": "Shellfish Panel",
+      "group": "Allergy",
+      "pricePence": 12400
+    },
+    {
+      "key": "bt-dehydroepiandrosterone-sulphate-dheas",
+      "sku": "NH-BT-DEHYDROEPIANDROSTERONE-SULPHATE-DHEAS",
+      "name": "Dehydroepiandrosterone Sulphate (DHEAS)",
+      "group": "Fertility",
+      "pricePence": 4300,
+      "resultsDays": 5
+    },
+    {
+      "key": "bt-sex-hormone-binding-globulin-shbg",
+      "sku": "NH-BT-SEX-HORMONE-BINDING-GLOBULIN-SHBG",
+      "name": "Sex Hormone Binding Globulin (SHBG)",
+      "group": "Fertility",
+      "pricePence": 8300,
+      "resultsDays": 4
+    },
+    {
+      "key": "bt-female-hormone-profile",
+      "sku": "NH-BT-FEMALE-HORMONE-PROFILE",
+      "name": "Female Hormone Profile",
+      "group": "Fertility",
+      "pricePence": 16600
+    },
+    {
+      "key": "bt-anti-mullerian-hormone-amh",
+      "sku": "NH-BT-ANTI-MULLERIAN-HORMONE-AMH",
+      "name": "Anti Mullerian Hormone (AMH)",
+      "group": "Fertility",
+      "pricePence": 8300,
+      "resultsDays": 4
+    },
+    {
+      "key": "bt-follicle-stimulating-hormone-test-fsh",
+      "sku": "NH-BT-FOLLICLE-STIMULATING-HORMONE-TEST-FSH",
+      "name": "Follicle Stimulating Hormone Test (FSH)",
+      "group": "Fertility",
+      "pricePence": 7300,
+      "resultsDays": 3
+    },
+    {
+      "key": "bt-hirsutism-profile",
+      "sku": "NH-BT-HIRSUTISM-PROFILE",
+      "name": "Hirsutism Profile",
+      "group": "Fertility",
+      "pricePence": 19100,
+      "resultsDays": 6
+    },
+    {
+      "key": "bt-luteinising-hormone-lh-test",
+      "sku": "NH-BT-LUTEINISING-HORMONE-LH-TEST",
+      "name": "Luteinising Hormone (LH) Test",
+      "group": "Fertility",
+      "pricePence": 7300,
+      "resultsDays": 3
+    },
+    {
+      "key": "bt-male-fertility-profile",
+      "sku": "NH-BT-MALE-FERTILITY-PROFILE",
+      "name": "Male Fertility Profile",
+      "group": "Fertility",
+      "pricePence": 19100,
+      "resultsDays": 4
+    },
+    {
+      "key": "bt-menopause-profile",
+      "sku": "NH-BT-MENOPAUSE-PROFILE",
+      "name": "Menopause Profile",
+      "group": "Fertility",
+      "pricePence": 16600,
+      "resultsDays": 4
+    },
+    {
+      "key": "bt-oestradiol-e2-test",
+      "sku": "NH-BT-OESTRADIOL-E2-TEST",
+      "name": "Oestradiol (E2) Test",
+      "group": "Fertility",
+      "pricePence": 7300,
+      "resultsDays": 4
+    },
+    {
+      "key": "bt-pregnancy-test-hcg-blood",
+      "sku": "NH-BT-PREGNANCY-TEST-HCG-BLOOD",
+      "name": "Pregnancy Test HCG (Blood)",
+      "group": "Fertility",
+      "pricePence": 8300,
+      "resultsDays": 4
+    },
+    {
+      "key": "bt-progesterone-test",
+      "sku": "NH-BT-PROGESTERONE-TEST",
+      "name": "Progesterone Test",
+      "group": "Fertility",
+      "pricePence": 8300,
+      "resultsDays": 4
+    },
+    {
+      "key": "bt-prolactin-test",
+      "sku": "NH-BT-PROLACTIN-TEST",
+      "name": "Prolactin Test",
+      "group": "Fertility",
+      "pricePence": 7300
+    },
+    {
+      "key": "bt-testosterone-test",
+      "sku": "NH-BT-TESTOSTERONE-TEST",
+      "name": "Testosterone test",
+      "group": "Fertility",
+      "pricePence": 7300,
+      "resultsDays": 3
+    },
+    {
+      "key": "bt-thyroid-stimulating-hormone-tsh",
+      "sku": "NH-BT-THYROID-STIMULATING-HORMONE-TSH",
+      "name": "Thyroid Stimulating Hormone (TSH)",
+      "group": "General health",
+      "pricePence": 7300,
+      "resultsDays": 3
+    },
+    {
+      "key": "bt-coagulation-screen",
+      "sku": "NH-BT-COAGULATION-SCREEN",
+      "name": "Coagulation Screen",
+      "group": "General health",
+      "pricePence": 10800,
+      "resultsDays": 1
+    },
+    {
+      "key": "bt-inr",
+      "sku": "NH-BT-INR",
+      "name": "INR",
+      "group": "General health",
+      "pricePence": 7300,
+      "resultsDays": 3
+    },
+    {
+      "key": "bt-anaemia-profile",
+      "sku": "NH-BT-ANAEMIA-PROFILE",
+      "name": "Anaemia Profile",
+      "group": "General health",
+      "pricePence": 16600
+    },
+    {
+      "key": "bt-auto-immune-screen",
+      "sku": "NH-BT-AUTO-IMMUNE-SCREEN",
+      "name": "Auto-Immune Screen",
+      "group": "General health",
+      "pricePence": 9900
+    },
+    {
+      "key": "bt-fatigue-screen",
+      "sku": "NH-BT-FATIGUE-SCREEN",
+      "name": "Fatigue Screen",
+      "group": "General health",
+      "pricePence": 20500
+    },
+    {
+      "key": "bt-full-blood-count",
+      "sku": "NH-BT-FULL-BLOOD-COUNT",
+      "name": "Full Blood Count",
+      "group": "General health",
+      "pricePence": 10900
+    },
+    {
+      "key": "bt-general-well-person-profile",
+      "sku": "NH-BT-GENERAL-WELL-PERSON-PROFILE",
+      "name": "General Well Person Profile",
+      "group": "General health",
+      "pricePence": 28000
+    },
+    {
+      "key": "bt-glucose",
+      "sku": "NH-BT-GLUCOSE",
+      "name": "Glucose",
+      "group": "General health",
+      "pricePence": 4300
+    },
+    {
+      "key": "bt-joint-rheumatology-profile",
+      "sku": "NH-BT-JOINT-RHEUMATOLOGY-PROFILE",
+      "name": "Joint Rheumatology Profile",
+      "group": "General health",
+      "pricePence": 37100
+    },
+    {
+      "key": "bt-hba1c-haemoglobin-a1c-glycated-haemoglobin",
+      "sku": "NH-BT-HBA1C-HAEMOGLOBIN-A1C-GLYCATED-HAEMOGLOBIN",
+      "name": "HbA1c (Haemoglobin A1c, Glycated haemoglobin)",
+      "group": "General health",
+      "pricePence": 7300
+    },
+    {
+      "key": "bt-kidney-function-uande-with-creatinine",
+      "sku": "NH-BT-KIDNEY-FUNCTION-UANDE-WITH-CREATININE",
+      "name": "Kidney Function (U&E with Creatinine)",
+      "group": "General health",
+      "pricePence": 9900
+    },
+    {
+      "key": "bt-lipid-panel",
+      "sku": "NH-BT-LIPID-PANEL",
+      "name": "Lipid Panel",
+      "group": "General health",
+      "pricePence": 9500
+    },
+    {
+      "key": "bt-liver-function-test-lft",
+      "sku": "NH-BT-LIVER-FUNCTION-TEST-LFT",
+      "name": "Liver Function Test (LFT)",
+      "group": "General health",
+      "pricePence": 9900
+    },
+    {
+      "key": "bt-thyroid-profile-tsh-ft4-ft3",
+      "sku": "NH-BT-THYROID-PROFILE-TSH-FT4-FT3",
+      "name": "Thyroid Profile (TSH, fT4, fT3)",
+      "group": "General health",
+      "pricePence": 16500
+    },
+    {
+      "key": "bt-uric-acid",
+      "sku": "NH-BT-URIC-ACID",
+      "name": "Uric Acid",
+      "group": "General health",
+      "pricePence": 4300
+    },
+    {
+      "key": "bt-hepatitis-b-surface-antigen-hbsag-current-infect",
+      "sku": "NH-BT-HEPATITIS-B-SURFACE-ANTIGEN-HBSAG-CURRENT-INFECTION-FR",
+      "name": "Hepatitis B Surface Antigen (HBsAg) (Current infection from virus)",
+      "group": "Individual tests",
+      "pricePence": 7300,
+      "resultsDays": 3
+    },
+    {
+      "key": "bt-hepatitis-c-antibody",
+      "sku": "NH-BT-HEPATITIS-C-ANTIBODY",
+      "name": "Hepatitis C Antibody",
+      "group": "Individual tests",
+      "pricePence": 13000,
+      "resultsDays": 3
+    },
+    {
+      "key": "bt-erythrocyte-sedimentation-rate-esr",
+      "sku": "NH-BT-ERYTHROCYTE-SEDIMENTATION-RATE-ESR",
+      "name": "Erythrocyte Sedimentation Rate (ESR)",
+      "group": "Individual tests",
+      "pricePence": 4300,
+      "resultsDays": 1
+    },
+    {
+      "key": "bt-rubella-antibody-igg",
+      "sku": "NH-BT-RUBELLA-ANTIBODY-IGG",
+      "name": "Rubella Antibody (IgG)",
+      "group": "Individual tests",
+      "pricePence": 8300,
+      "resultsDays": 5
+    },
+    {
+      "key": "bt-measles-antibody-igg",
+      "sku": "NH-BT-MEASLES-ANTIBODY-IGG",
+      "name": "Measles Antibody (IgG)",
+      "group": "Individual tests",
+      "pricePence": 7300,
+      "resultsDays": 5
+    },
+    {
+      "key": "bt-mumps-antibodies-igg",
+      "sku": "NH-BT-MUMPS-ANTIBODIES-IGG",
+      "name": "Mumps Antibodies (IgG)",
+      "group": "Individual tests",
+      "pricePence": 7300,
+      "resultsDays": 5
+    },
+    {
+      "key": "bt-varicella-zoster-antibodies",
+      "sku": "NH-BT-VARICELLA-ZOSTER-ANTIBODIES",
+      "name": "Varicella Zoster Antibodies",
+      "group": "Individual tests",
+      "pricePence": 9900,
+      "resultsDays": 5
+    },
+    {
+      "key": "bt-hepatitis-b-core-antibodies-past-infection-from-",
+      "sku": "NH-BT-HEPATITIS-B-CORE-ANTIBODIES-PAST-INFECTION-FROM-VIRUS",
+      "name": "Hepatitis B Core Antibodies (Past infection from virus)",
+      "group": "Individual tests",
+      "pricePence": 4300,
+      "resultsDays": 5
+    },
+    {
+      "key": "bt-cytomegalovirus-antibodies",
+      "sku": "NH-BT-CYTOMEGALOVIRUS-ANTIBODIES",
+      "name": "Cytomegalovirus Antibodies",
+      "group": "Individual tests",
+      "pricePence": 8300,
+      "resultsDays": 5
+    },
+    {
+      "key": "bt-rheumatoid-factor",
+      "sku": "NH-BT-RHEUMATOID-FACTOR",
+      "name": "Rheumatoid Factor",
+      "group": "Individual tests",
+      "pricePence": 4300,
+      "resultsDays": 3
+    },
+    {
+      "key": "bt-blood-group",
+      "sku": "NH-BT-BLOOD-GROUP",
+      "name": "Blood Group",
+      "group": "Individual tests",
+      "pricePence": 10800
+    },
+    {
+      "key": "bt-cortisol",
+      "sku": "NH-BT-CORTISOL",
+      "name": "Cortisol",
+      "group": "Individual tests",
+      "pricePence": 7300
+    },
+    {
+      "key": "bt-c-reactive-protein-crp",
+      "sku": "NH-BT-C-REACTIVE-PROTEIN-CRP",
+      "name": "C-Reactive Protein (CRP)",
+      "group": "Individual tests",
+      "pricePence": 5900
+    },
+    {
+      "key": "bt-hepatitis-b-surface-antibody-immunity-status-fro",
+      "sku": "NH-BT-HEPATITIS-B-SURFACE-ANTIBODY-IMMUNITY-STATUS-FROM-VACC",
+      "name": "Hepatitis B Surface Antibody (Immunity status from vaccination or virus)",
+      "group": "Individual tests",
+      "pricePence": 8300
+    },
+    {
+      "key": "bt-lymes-disease-borrelia-serology-test",
+      "sku": "NH-BT-LYMES-DISEASE-BORRELIA-SEROLOGY-TEST",
+      "name": "Lymes Disease (Borrelia Serology) Test",
+      "group": "Individual tests",
+      "pricePence": 10800,
+      "resultsDays": 10
+    },
+    {
+      "key": "bt-mmr-measles-mumps-rubella",
+      "sku": "NH-BT-MMR-MEASLES-MUMPS-RUBELLA",
+      "name": "MMR - Measles/Mumps/Rubella",
+      "group": "Individual tests",
+      "pricePence": 10800
+    },
+    {
+      "key": "bt-tb-quantiferon-gold-test",
+      "sku": "NH-BT-TB-QUANTIFERON-GOLD-TEST",
+      "name": "TB Quantiferon Gold Test",
+      "group": "Individual tests",
+      "pricePence": 9900,
+      "resultsDays": 10
+    },
+    {
+      "key": "bt-carbohydrate-deficient-transferrin-cdt",
+      "sku": "NH-BT-CARBOHYDRATE-DEFICIENT-TRANSFERRIN-CDT",
+      "name": "Carbohydrate Deficient Transferrin (CDT)",
+      "group": "Lifestyle",
+      "pricePence": 12400,
+      "resultsDays": 5
+    },
+    {
+      "key": "bt-driving-risk-profile",
+      "sku": "NH-BT-DRIVING-RISK-PROFILE",
+      "name": "Driving Risk Profile",
+      "group": "Lifestyle",
+      "pricePence": 16600,
+      "resultsDays": 4
+    },
+    {
+      "key": "bt-sports-profile",
+      "sku": "NH-BT-SPORTS-PROFILE",
+      "name": "Sports Profile",
+      "group": "Lifestyle",
+      "pricePence": 42100,
+      "resultsDays": 6
+    },
+    {
+      "key": "bt-nutrition-screen",
+      "sku": "NH-BT-NUTRITION-SCREEN",
+      "name": "Nutrition Screen",
+      "group": "Nutrition",
+      "pricePence": 28100,
+      "resultsDays": 7
+    },
+    {
+      "key": "bt-active-vitamin-b12",
+      "sku": "NH-BT-ACTIVE-VITAMIN-B12",
+      "name": "Active Vitamin B12",
+      "group": "Nutrition",
+      "pricePence": 9900,
+      "resultsDays": 4
+    },
+    {
+      "key": "bt-bone-profile",
+      "sku": "NH-BT-BONE-PROFILE",
+      "name": "Bone Profile",
+      "group": "Nutrition",
+      "pricePence": 7300,
+      "resultsDays": 1
+    },
+    {
+      "key": "bt-calcium",
+      "sku": "NH-BT-CALCIUM",
+      "name": "Calcium",
+      "group": "Nutrition",
+      "pricePence": 4300,
+      "resultsDays": 1
+    },
+    {
+      "key": "bt-coeliac-disease-screen",
+      "sku": "NH-BT-COELIAC-DISEASE-SCREEN",
+      "name": "Coeliac Disease Screen",
+      "group": "Nutrition",
+      "pricePence": 20900
+    },
+    {
+      "key": "bt-ferritin",
+      "sku": "NH-BT-FERRITIN",
+      "name": "Ferritin",
+      "group": "Nutrition",
+      "pricePence": 8500
+    },
+    {
+      "key": "bt-iron-and-iron-binding",
+      "sku": "NH-BT-IRON-AND-IRON-BINDING",
+      "name": "Iron & Iron Binding",
+      "group": "Nutrition",
+      "pricePence": 5300
+    },
+    {
+      "key": "bt-magnesium",
+      "sku": "NH-BT-MAGNESIUM",
+      "name": "Magnesium",
+      "group": "Nutrition",
+      "pricePence": 8300
+    },
+    {
+      "key": "bt-mineral-screen",
+      "sku": "NH-BT-MINERAL-SCREEN",
+      "name": "Mineral Screen",
+      "group": "Nutrition",
+      "pricePence": 25500,
+      "resultsDays": 5
+    },
+    {
+      "key": "bt-omega-3-omega-6",
+      "sku": "NH-BT-OMEGA-3-OMEGA-6",
+      "name": "Omega 3 / Omega 6",
+      "group": "Nutrition",
+      "pricePence": 12400
+    },
+    {
+      "key": "bt-phosphate",
+      "sku": "NH-BT-PHOSPHATE",
+      "name": "Phosphate",
+      "group": "Nutrition",
+      "pricePence": 4300,
+      "resultsDays": 1
+    },
+    {
+      "key": "bt-vitamin-b12-and-folic-acid",
+      "sku": "NH-BT-VITAMIN-B12-AND-FOLIC-ACID",
+      "name": "Vitamin B12 & Folic acid",
+      "group": "Nutrition",
+      "pricePence": 8300
+    },
+    {
+      "key": "bt-vitamin-d",
+      "sku": "NH-BT-VITAMIN-D",
+      "name": "Vitamin D",
+      "group": "Nutrition",
+      "pricePence": 12400
+    },
+    {
+      "key": "bt-mma-methyl-malonic-acid",
+      "sku": "NH-BT-MMA-METHYL-MALONIC-ACID",
+      "name": "MMA (Methyl Malonic acid)",
+      "group": "Nutrition",
+      "pricePence": 10800
+    },
+    {
+      "key": "bt-vitamin-screen",
+      "sku": "NH-BT-VITAMIN-SCREEN",
+      "name": "Vitamin Screen",
+      "group": "Nutrition",
+      "pricePence": 47700,
+      "resultsDays": 10
+    },
+    {
+      "key": "bt-zinc",
+      "sku": "NH-BT-ZINC",
+      "name": "Zinc",
+      "group": "Nutrition",
+      "pricePence": 7300
+    }
+  ],
+  "imaging": [
+    {
+      "key": "img-dexa",
+      "sku": "NH-IMG-DEXA",
+      "name": "Bone density scan (DEXA)",
+      "description": "A DEXA scan is a quick, painless low-dose X-ray test that measures bone strength and helps assess the chance of osteoporosis.",
+      "durationMins": 20
+    },
+    {
+      "key": "img-cardiac-mri",
+      "sku": "NH-IMG-CMR",
+      "name": "Cardiac MRI (CMR)",
+      "description": "Detailed MRI images of the heart: what a cardiac MRI involves, why it is used and how to prepare.",
+      "durationMins": 60
+    },
+    {
+      "key": "img-gi-radiology",
+      "sku": "NH-IMG-GI",
+      "name": "Gastrointestinal radiology",
+      "description": "X-ray, CT, MRI and ultrasound imaging to diagnose and guide treatment of digestive system disorders.",
+      "durationMins": 30
+    },
+    {
+      "key": "img-hycosy",
+      "sku": "NH-IMG-HYCOSY",
+      "name": "Hysterosalpingo contrast sonography (HyCoSy)",
+      "description": "Ultrasound fallopian tube test: what it involves, why it is used and how to prepare.",
+      "durationMins": 30
+    },
+    {
+      "key": "img-mammogram",
+      "sku": "NH-IMG-MAMMO",
+      "name": "Mammogram (breast screening)",
+      "description": "A diagnostic test used to look for problems within the breast and surrounding tissues. Some women can refer themselves for self-pay screening.",
+      "durationMins": 20
+    },
+    {
+      "key": "img-nuclear-medicine",
+      "sku": "NH-IMG-NUCMED",
+      "name": "Nuclear medicine",
+      "description": "Imaging using a small amount of radioactive tracer to show how organs and tissues are working, not just what they look like.",
+      "durationMins": 60
+    },
+    {
+      "key": "img-oral-imaging",
+      "sku": "NH-IMG-ORAL",
+      "name": "Oral (dental) imaging",
+      "description": "Dental imaging, including the orthopantomogram (OPG).",
+      "durationMins": 15
+    },
+    {
+      "key": "img-opg",
+      "sku": "NH-IMG-OPG",
+      "name": "Orthopantomogram (OPG)",
+      "description": "An OPG dental X-ray: what it involves, why it is used, what happens during and after, and the risks.",
+      "durationMins": 15
+    },
+    {
+      "key": "img-bone-markers",
+      "sku": "NH-IMG-BONEMARK",
+      "name": "Osteoporosis screen (bone markers)",
+      "description": "A bone markers test: what it involves, why it is used, and how it differs from a DEXA scan.",
+      "durationMins": 15
+    },
+    {
+      "key": "img-ovarian-screening",
+      "sku": "NH-IMG-OVARIAN",
+      "name": "Ovarian cancer screening",
+      "description": "What ovarian screening involves, who might be offered it, and what happens if you are at higher risk.",
+      "durationMins": 30
+    },
+    {
+      "key": "img-pet-ct",
+      "sku": "NH-IMG-PETCT",
+      "name": "PET-CT scan",
+      "description": "Uses X-rays and a radioactive tracer to take a detailed 3D picture inside the body and show areas where cells are more active than usual.",
+      "durationMins": 90
+    },
+    {
+      "key": "img-ultrasound",
+      "sku": "NH-IMG-US",
+      "name": "Ultrasound",
+      "description": "A non-invasive scan that uses sound waves to create live images from inside the body.",
+      "durationMins": 30
+    },
+    {
+      "key": "img-ultrasound-breast",
+      "sku": "NH-IMG-US-BREAST",
+      "name": "Breast ultrasound",
+      "description": "Ultrasound imaging of the breast.",
+      "durationMins": 30
+    },
+    {
+      "key": "img-ultrasound-endoscopic",
+      "sku": "NH-IMG-US-ENDO",
+      "name": "Endoscopic ultrasound",
+      "description": "Ultrasound performed with an endoscope for detailed images of the digestive tract and nearby organs.",
+      "durationMins": 45
+    },
+    {
+      "key": "img-ultrasound-gynae",
+      "sku": "NH-IMG-US-GYNAE",
+      "name": "Gynaecological ultrasound",
+      "description": "Ultrasound imaging of the female reproductive system.",
+      "durationMins": 30
+    },
+    {
+      "key": "img-ultrasound-msk",
+      "sku": "NH-IMG-US-MSK",
+      "name": "MSK ultrasound",
+      "description": "Ultrasound imaging of muscles, tendons, ligaments and joints.",
+      "durationMins": 30
+    }
+  ]
+}

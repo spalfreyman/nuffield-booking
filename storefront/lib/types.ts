@@ -29,6 +29,9 @@ export interface Product {
   priceFrom?: boolean;
   leadHours: number;
   requiresReferral?: boolean;
+  /** sub-heading within a family (e.g. blood test category) */
+  group?: string;
+  resultsDays?: number;
 }
 
 export interface Location {

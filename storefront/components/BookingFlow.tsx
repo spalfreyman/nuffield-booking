@@ -151,15 +151,18 @@ function ProductStep({ family, format, audience, onPick }: { family: Family; for
       <h1 className="title">Choose an appointment</h1>
       {products?.some((p) => (p.price ?? 0) > 25000) && <div className="infobox">We offer 0% finance on products over £250, so you can pay monthly at no extra cost. <b>Apply now</b> to spread the cost.</div>}
       {audience === 'insurance' && <div className="infobox">Insurance customers: some services need a referral or an insurer authorisation code. You will be asked for it later.</div>}
-      {products?.map((p) => (
-        <div className="pcard" key={p.sku}>
+      {products?.map((p, i) => (
+        <div key={p.sku}>
+        {p.group && p.group !== products[i - 1]?.group && <h2 className="title" style={{ fontSize: 22, margin: '28px 0 10px' }}>{p.group}</h2>}
+        <div className="pcard">
           {p.badge && <span className={`badge ${p.badge}`}>{p.badge}</span>}
           <div className="top"><h3>{p.name}</h3><button className="more" onClick={() => setInfo(info === p.sku ? null : p.sku)}>More information ⓘ</button></div>
-          <div className="meta">{priceLabel(p, audience)}&nbsp;&nbsp;{p.durationMins} minutes</div>
+          <div className="meta">{priceLabel(p, audience)}&nbsp;&nbsp;{p.durationMins} minutes{p.resultsDays ? `  ·  results in about ${p.resultsDays} days` : ''}</div>
           {audience !== 'public' && p.publicPrice != null && p.price != null && p.price < p.publicPrice && <div className="muted" style={{ fontSize: 14, marginBottom: 8 }}>Standard price <s>{gbp(p.publicPrice)}</s></div>}
           <p>{p.description}</p>
           {info === p.sku && <p className="muted">SKU {p.sku}{p.requiresReferral ? ' · referral required' : ''} · cancel free up to 72 hours before.</p>}
           <button className="btn block" onClick={() => onPick(p)}>Select</button>
+        </div>
         </div>
       ))}
       {products && !products.length && <p>No appointments available for this selection.</p>}

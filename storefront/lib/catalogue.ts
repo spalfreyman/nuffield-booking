@@ -26,6 +26,7 @@ type Seed = {
   prices: Record<Audience, number>;
   channelPrices?: Record<string, Record<Audience, number>>;
   formats?: Format[]; leadHours?: number;
+  group?: string; resultsDays?: number; priceOnEnquiry?: boolean;
 };
 
 interface Cache { at: number; source: 'commercetools' | 'seed'; products: Seed[]; locations: Location[]; offers: Map<string, Set<string>> | null }
@@ -34,6 +35,12 @@ const TTL_MS = 60_000;
 
 function loadSeed(): Cache {
   const products = (read('products-services.json').products as Seed[]).filter((p) => p.bookingMode !== 'purchase');
+  try {
+    const dx = read('diagnostics.json');
+    const all = (n: number) => ({ public: n, insurance: n, gym: n, business: n });
+    for (const b of dx.blood) products.push({ key: b.key, sku: b.sku, category: 'cat-tests-scans', name: b.name, description: `Pathology Direct blood test (${b.group}). Self-pay only.`, durationMins: 15, bookingMode: 'slot', prices: all(b.pricePence), group: b.group, resultsDays: b.resultsDays });
+    for (const i of dx.imaging) products.push({ key: i.key, sku: i.sku, category: 'cat-tests-scans', name: i.name, description: i.description, durationMins: i.durationMins, bookingMode: 'slot', requiresReferral: true, prices: all(0), group: 'Imaging and radiology', priceOnEnquiry: true });
+  } catch { /* diagnostics.json is optional */ }
   const locations: Location[] = (read('locations.json') as any[]).map(channelToLocation);
   return { at: Date.now(), source: 'seed', products, locations, offers: null };
 }
@@ -80,6 +87,7 @@ async function loadCommercetools(): Promise<Cache> {
       key: pp.key, sku: v.sku, category: `cat-${family}`, name: pp.name['en-GB'], description: pp.description?.['en-GB'] ?? '',
       durationMins: attr('slotDurationMins'), bookingMode: attr('bookingMode'), requiresReferral: attr('requiresReferral'),
       formats: attr('formats'), leadHours: attr('leadTimeHours'),
+      group: attr('testGroup') ?? (attr('modality') === 'imaging' ? 'Imaging and radiology' : undefined), resultsDays: attr('resultsDays'), priceOnEnquiry: attr('priceOnEnquiry'),
       prices, channelPrices: Object.keys(channelPrices.london).length ? channelPrices : undefined,
     } as Seed;
   });
@@ -127,17 +135,18 @@ export const REMOTE_LOCATION: Location = {
 export function toProduct(p: Seed, audience: Audience, region: 'london' | 'outside-london' = 'outside-london'): Product {
   const family = p.category.replace('cat-', '');
   const regional = p.channelPrices?.[region];
-  const price = (regional ?? p.prices)[audience] ?? null;
+  const price = p.priceOnEnquiry ? null : (regional ?? p.prices)[audience] ?? null;
   return {
     key: p.key, sku: p.sku, family, name: p.name, description: p.description,
     durationMins: p.durationMins ?? 30,
     badge: BADGES[p.key],
     formats: p.formats?.length ? p.formats : REMOTE_OK.has(family) ? ['in-person', 'remote'] : ['in-person'],
     price,
-    publicPrice: (regional ?? p.prices).public ?? null,
+    publicPrice: p.priceOnEnquiry ? null : (regional ?? p.prices).public ?? null,
     priceFrom: !!p.channelPrices,
     leadHours: p.leadHours ?? (family === 'health-assessments' ? 48 : 4),
     requiresReferral: p.requiresReferral,
+    group: p.group, resultsDays: p.resultsDays,
   };
 }
 
@@ -145,7 +154,9 @@ export function listProducts(family: string, format: Format, audience: Audience,
   return load().products
     .filter((p) => p.category === `cat-${family}`)
     .map((p) => toProduct(p, audience, region))
-    .filter((p) => p.formats.includes(format));
+    .filter((p) => p.formats.includes(format))
+    // ungrouped products first, then grouped ones by group name (stable within a group)
+    .sort((a, b) => (a.group ?? '').localeCompare(b.group ?? ''));
 }
 
 export function getProduct(sku: string, audience: Audience, region?: 'london' | 'outside-london'): Product | null {
@@ -175,7 +186,7 @@ export function locationOffers(loc: Location, p: Product): boolean {
   switch (loc.type) {
     case 'hospital': return p.family !== 'gyms';
     case 'diagnostic-suite': return ['health-assessments', 'tests-scans', 'physio', 'consultations'].includes(p.family);
-    case 'medical-centre': return ['health-assessments', 'gp', 'physio'].includes(p.family) || p.sku === 'NH-TEST-BLOOD';
+    case 'medical-centre': return ['health-assessments', 'gp', 'physio'].includes(p.family) || p.sku === 'NH-TEST-BLOOD' || p.sku.startsWith('NH-BT-');
     case 'gym': return p.family === 'physio' || p.family === 'gyms';
     default: return false;
   }

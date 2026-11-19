@@ -1,5 +1,5 @@
 // Idempotent seed of the Nuffield booking catalogue into a commercetools project.
-// Usage: node scripts/seed-commercetools.mjs [--env nuffield_presales_demo_claude.env] [--dry-run] [--skip-treatments]
+// Usage: node scripts/seed-commercetools.mjs [--env nuffield_presales_demo_claude.env] [--dry-run] [--skip-treatments] [--skip-diagnostics]
 // Everything is keyed; re-running skips resources that already exist.
 import { readFileSync } from 'node:fs';
 
@@ -92,13 +92,24 @@ const PRODUCT_TYPES = [
   PT('nh-health-assessment', 'Health assessment', 'Bookable health assessments', [A('resultsDays', 'number'), A('gymPassDays', 'number'), A('financeAvailable', 'boolean')]),
   PT('nh-physio', 'Physiotherapy', 'Physiotherapy appointments', [A('appointmentType')]),
   PT('nh-gp', 'Private GP', 'Private GP appointments'),
-  PT('nh-diagnostic', 'Test or scan', 'Imaging and diagnostics', [A('modality'), A('requiresReferral', 'boolean')]),
+  PT('nh-diagnostic', 'Test or scan', 'Imaging and diagnostics', [A('modality'), A('requiresReferral', 'boolean'), A('testGroup'), A('resultsDays', 'number'), A('priceOnEnquiry', 'boolean')]),
   PT('nh-consultation', 'Consultation', 'Consultant consultations', [A('specialty')]),
   PT('nh-treatment', 'Hospital treatment', 'Treatment information (price on enquiry)', [A('specialty'), A('sourceUrl')]),
   PT('nh-gym-membership', 'Gym membership', 'Gym membership tiers', [A('termMonths', 'number'), A('gymAccessTier')]),
   PT('nh-gym-service', 'Gym service', 'Tours, personal training', []),
 ];
 for (const t of PRODUCT_TYPES) await ensure('product-types', t.key, t, 'product-types');
+// Existing projects: add any attribute definitions a product type is missing (idempotent).
+for (const t of PRODUCT_TYPES) {
+  const cur = await ct('GET', `/product-types/key=${t.key}`);
+  if (cur.status !== 200) continue;
+  const have = new Set(cur.json.attributes.map((a) => a.name));
+  const actions = t.attributes.filter((a) => !have.has(a.name)).map((attribute) => ({ action: 'addAttributeDefinition', attribute }));
+  if (actions.length && !DRY) {
+    const r = await ct('POST', `/product-types/key=${t.key}`, { version: cur.json.version, actions });
+    console.log(`product type ${t.key}: added ${actions.map((a) => a.attribute.name).join(', ')} (${r.status})`);
+  }
+}
 
 // --- 3. customer groups ---
 for (const g of data('customer-groups.json')) await ensure('customer-groups', g.key, g, 'customer-groups');
@@ -107,6 +118,9 @@ for (const g of data('customer-groups.json')) await ensure('customer-groups', g.
 const SPEC = { orthopaedics: 'Orthopaedics', spine: 'Spine', 'cardiology-vascular': 'Cardiology and vascular', 'cosmetic-reconstructive': 'Cosmetic and reconstructive', ophthalmology: 'Ophthalmology', ent: 'ENT', 'urology-prostate': 'Urology and prostate', 'gynaecology-fertility': 'Gynaecology and fertility', 'general-surgery': 'General surgery and hernia', colorectal: 'Colorectal', bariatric: 'Bariatric and weight loss', oncology: 'Oncology', dermatology: 'Dermatology', 'pain-management': 'Pain management', 'dental-maxillofacial': 'Dental and maxillofacial', 'therapies-other': 'Therapies and other' };
 const TOP = { 'cat-health-assessments': 'Health assessments', 'cat-physio': 'Physiotherapy', 'cat-gp': 'Private GP', 'cat-tests-scans': 'Tests and scans', 'cat-consultations': 'Consultations', 'cat-treatments': 'Hospital treatments', 'cat-gyms': 'Gyms' };
 for (const [key, name] of Object.entries(TOP)) await ensure('categories', key, { key, name: L(name), slug: L(slug(name)) }, 'categories');
+for (const [key, name] of [['cat-tests-blood', 'Blood and fluids'], ['cat-tests-imaging', 'Imaging and radiology']]) {
+  await ensure('categories', key, { key, name: L(name), slug: L('tests-' + slug(name)), parent: { typeId: 'category', key: 'cat-tests-scans' } }, 'categories');
+}
 for (const [s, name] of Object.entries(SPEC)) {
   const key = `cat-tx-${s}`;
   await ensure('categories', key, { key, name: L(name), slug: L('treatments-' + slug(name)), parent: { typeId: 'category', key: 'cat-treatments' } }, 'categories');
@@ -190,6 +204,46 @@ for (const p of svc.filter((x) => x.bookingMode !== 'purchase')) for (const loc 
     custom: { type: { typeId: 'type', key: 'nh-inventory' }, fields: { defaultDurationMins: p.durationMins ?? 30 } } });
 }
 await pool(entries, 6, (e) => ensure('inventory', e.key, e, 'inventory-entries'));
+
+// --- 9. blood tests (Pathology Direct) and imaging (nuffieldhealth.com/tests-scans) ---
+// Blood tests: self-pay, same price for every audience (insurance cannot be used). Imaging: price confirmed by the
+// hospital after referral, so priceOnEnquiry=true with a GBP 0 placeholder price (a commercetools cart line needs a price).
+if (!flag('--skip-diagnostics')) {
+  const dx = data('diagnostics.json');
+  const audiences = ['public', 'insurance', 'gym', 'business'];
+  const dxDraft = (p, { blood }) => {
+    const amount = blood ? p.pricePence : 0;
+    return {
+      key: p.key, productType: { typeId: 'product-type', key: 'nh-diagnostic' }, name: L(p.name), slug: L(slug(p.name)),
+      description: L(blood ? `Pathology Direct blood test (${p.group}).${p.resultsDays ? ` Results in about ${p.resultsDays} days.` : ''} Self-pay only; insurance cannot be used.` : p.description),
+      categories: [{ typeId: 'category', key: blood ? 'cat-tests-blood' : 'cat-tests-imaging' }], publish: true,
+      masterVariant: {
+        sku: p.sku, key: p.sku,
+        prices: audiences.map((aud) => ({ value: money(amount), country: 'GB', ...(GROUP[aud] ? { customerGroup: { typeId: 'customer-group', key: GROUP[aud] } } : {}) })),
+        attributes: [
+          { name: 'bookable', value: true }, { name: 'bookingMode', value: 'slot' },
+          { name: 'slotDurationMins', value: blood ? 15 : p.durationMins }, { name: 'leadTimeHours', value: blood ? 24 : 48 },
+          { name: 'cancellationHours', value: 72 }, { name: 'formats', value: ['in-person'] },
+          { name: 'modality', value: blood ? 'blood' : 'imaging' }, { name: 'requiresReferral', value: !blood },
+          ...(blood ? [{ name: 'testGroup', value: p.group }, ...(p.resultsDays ? [{ name: 'resultsDays', value: p.resultsDays }] : [])] : [{ name: 'priceOnEnquiry', value: true }]),
+        ],
+      },
+    };
+  };
+  const dxProducts = [...dx.blood.map((p) => ({ p, blood: true })), ...dx.imaging.map((p) => ({ p, blood: false }))];
+  await pool(dxProducts, 6, ({ p, blood }) => ensure('products', p.key, dxDraft(p, { blood }), 'products(diagnostics)'));
+
+  // Blood tests are offered wherever the generic blood test is (hospitals, diagnostic suites, medical centres);
+  // imaging at hospitals and diagnostic suites.
+  const dxOffer = (type, blood) => (blood ? ['hospital', 'diagnostic-suite', 'medical-centre'] : ['hospital', 'diagnostic-suite']).includes(type);
+  const dxEntries = [];
+  for (const { p, blood } of dxProducts) for (const loc of locations) {
+    if (!dxOffer(loc.custom.fields.locationType, blood)) continue;
+    dxEntries.push({ key: `inv-${p.sku}-${loc.key}`.slice(0, 256), sku: p.sku, supplyChannel: { typeId: 'channel', key: loc.key }, quantityOnStock: 60,
+      custom: { type: { typeId: 'type', key: 'nh-inventory' }, fields: { defaultDurationMins: blood ? 15 : p.durationMins } } });
+  }
+  await pool(dxEntries, 8, (e) => ensure('inventory', e.key, e, 'inventory-entries(diagnostics)'));
+}
 
 console.log(DRY ? '\nDRY RUN – nothing written' : '\nDone');
 console.table(stats);
