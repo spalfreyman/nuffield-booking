@@ -3,6 +3,7 @@ import { getLocation, getProduct, ready } from '@/lib/catalogue';
 import { createShareCart, ordersEnabled } from '@/lib/orders';
 import { shareToken } from '@/lib/share';
 import { appointmentLabel } from '@/lib/appt';
+import { slotsForDay } from '@/lib/calendar';
 import type { Audience } from '@/lib/types';
 export const dynamic = 'force-dynamic';
 
@@ -18,6 +19,10 @@ export async function POST(req: Request) {
   const start = b.startsAt ? new Date(b.startsAt) : null;
   if (!loc || !product || !start || isNaN(start.getTime())) return NextResponse.json({ error: 'invalid selection' }, { status: 400 });
   const startsAt = start.toISOString();
+  // Only times the storefront can actually book: in the future, beyond the service's lead time, with a free slot.
+  if (!slotsForDay(loc.key, product.sku, startsAt.slice(0, 10)).some((x) => x.startsAt === startsAt)) {
+    return NextResponse.json({ error: `That time cannot be booked online (in the past, inside the ${product.leadHours}-hour booking lead time, or fully booked). Pick a later slot.` }, { status: 409 });
+  }
   const endsAt = new Date(start.getTime() + product.durationMins * 60000).toISOString();
   const cart = await createShareCart({ locationKey: loc.key, sku: product.sku, startsAt, endsAt, audience, format: loc.type === 'remote' ? 'remote' : 'in-person' });
   const url = `${new URL(req.url).origin}/s/${encodeURIComponent(await shareToken(cart.id))}`;
