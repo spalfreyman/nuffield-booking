@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import PrefillToggle from '@/components/PrefillToggle';
 export default function Home() {
   return (
     <main>
@@ -9,6 +10,7 @@ export default function Home() {
           <p>Personalised health checks with support for a whole year. Book online in minutes.</p>
           <Link className="btn primary" href="/book">Book a health assessment ›</Link>
           <Link className="btn outline" href="/book?family=physio">Book physiotherapy ›</Link>
+          <PrefillToggle />
         </div>
       </div></section>
       <section className="wrap" style={{ padding: '40px 0' }}>

@@ -2,6 +2,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { AUDIENCES, gbp } from '@/lib/types';
+import { SAMPLE, pf } from '@/lib/prefill';
 import type { Audience, Clinic, Family, Format, GeoResult, Product, Slot } from '@/lib/types';
 
 type Phase = 'audience' | 'family' | 'format' | 'product' | 'lead' | 'location' | 'date' | 'appointment' | 'details' | 'confirm';
@@ -171,7 +172,7 @@ function ProductStep({ family, format, audience, onPick }: { family: Family; for
 }
 
 function LeadStep({ product, audience, onNext }: { product: Product; audience: Audience; onNext: () => void }) {
-  const [name, setName] = useState(''); const [phone, setPhone] = useState('');
+  const [name, setName] = useState(() => pf(SAMPLE.name, '')); const [phone, setPhone] = useState(() => pf(SAMPLE.phone, ''));
   return (
     <>
       <div className="narrow">
@@ -189,8 +190,12 @@ function LeadStep({ product, audience, onNext }: { product: Product; audience: A
 
 /* ---------- step 2 ---------- */
 function LocationStep({ onPick }: { onPick: (g: GeoResult) => void }) {
-  const [q, setQ] = useState(''); const [results, setResults] = useState<GeoResult[]>([]);
+  const [q, setQ] = useState(() => pf(SAMPLE.location, '')); const [results, setResults] = useState<GeoResult[]>([]);
   const [chosen, setChosen] = useState<GeoResult | null>(null); const [err, setErr] = useState(false);
+  useEffect(() => { // pre-fill: pick the first match for the sample location
+    if (!pf(true, false)) return;
+    api<{ results: GeoResult[] }>(`/api/geocode?q=${encodeURIComponent(SAMPLE.location)}`).then((r) => { if (r.results[0]) { setChosen(r.results[0]); setQ(r.results[0].label); setResults([]); } });
+  }, []);
   useEffect(() => {
     if (chosen && q === chosen.label) return;
     const t = setTimeout(() => { if (q.trim().length > 1) api<{ results: GeoResult[] }>(`/api/geocode?q=${encodeURIComponent(q)}`).then((r) => setResults(r.results)); else setResults([]); }, 150);
@@ -353,13 +358,13 @@ function DetailsStep({ product, family, audience, format, clinic, slot, hold, on
       .then((r) => { const p = r.products.find((x) => x.sku === product.sku); if (p) setPriced({ ...p, priceFrom: false }); });
   }, [product, format, audience, clinic.pricingRegion]);
 
-  const [f, setF] = useState<Record<string, string>>({ title: '', first: '', last: '', dob: '', sex: '', postcode: '', address: '', email: '', email2: '', phone: '', manual: '' });
-  const [fund, setFund] = useState<Record<string, string>>({ insurer: '', policy: '', authCode: '', membership: '', company: '' });
+  const [f, setF] = useState<Record<string, string>>(() => pf({ title: SAMPLE.title, first: SAMPLE.first, last: SAMPLE.last, dob: SAMPLE.dob, sex: SAMPLE.sex, postcode: SAMPLE.postcode, address: SAMPLE.address, email: SAMPLE.email, email2: SAMPLE.email, phone: SAMPLE.phone, manual: '' }, { title: '', first: '', last: '', dob: '', sex: '', postcode: '', address: '', email: '', email2: '', phone: '', manual: '' }));
+  const [fund, setFund] = useState<Record<string, string>>(() => pf({ insurer: SAMPLE.insurer, policy: SAMPLE.policy, authCode: SAMPLE.authCode, membership: SAMPLE.membership, company: SAMPLE.company }, { insurer: '', policy: '', authCode: '', membership: '', company: '' }));
   const [errors, setErrors] = useState<Record<string, boolean>>({});
   const [personalDone, setPersonalDone] = useState(false);
-  const [addrOpts, setAddrOpts] = useState<string[]>([]);
+  const [addrOpts, setAddrOpts] = useState<string[]>(() => pf([1, 2, 3, 4].map((n) => `${n} Sample Street, ${SAMPLE.postcode}`), []));
   const [manual, setManual] = useState(false);
-  const [card, setCard] = useState({ name: '', number: '', expiry: '', cvc: '' });
+  const [card, setCard] = useState(() => pf({ ...SAMPLE.card }, { name: '', number: '', expiry: '', cvc: '' }));
   const [token, setToken] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
   const [err, setErr] = useState<string | null>(null);
