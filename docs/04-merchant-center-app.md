@@ -12,6 +12,16 @@ Custom application in `merchant-center/` (entry point `nuffield-booking`, built 
 
 Permissions: `view_products` (view), `manage_products` (manage). The matrix is read-only for view-only users.
 
+## Booking links (Calendar view)
+Click a slot, pick the customer type and press **Create booking link**. The app POSTs to the calendar service (`/api/admin/share`, allowed only from Merchant Center origins), which creates a commercetools **cart** holding the service, location and time (customer group from the customer type, `source = merchant-center-link`). The response is a signed link `https://<storefront>/s/<cartId>.<signature>`:
+- opening it sets a cookie that lets the customer past the site password and redirects to `/book?cart=<cartId>`, where the selection is pre-filled and the time is held for 10 minutes;
+- the customer enters their details and pays; checkout updates **that same cart** (email, addresses, funding, slot) and turns it into the order. The link then returns 410;
+- if the time has been taken meanwhile, the customer is sent to choose another time.
+Anyone holding the link can open the storefront for that booking, so treat it like a shared secret.
+
+## Order fields
+Only details that apply to the customer type are stored (self-pay: none; insurance: insurer, policy number, authorisation code; gym: membership number; business: company code). Orders carry readable appointment fields (`appointmentTime` e.g. "Mon 30 Nov 2026, 08:00–08:20 (UK time)", `appointmentStartsAt/EndsAt`, `appointmentLocation`, `appointmentService`) so the time is visible in the Merchant Center order's custom fields; the line item has `appointmentTime` too. `scripts/fix-orders.mjs` cleans and backfills existing orders.
+
 ## Calendar service
 The app calls the storefront's mock calendar (`../storefront`, `/api/admin/*`, no patient data returned). Base URL = `CALENDAR_API_URL` (default `http://localhost:3100`). The storefront allows CORS from `ADMIN_ALLOWED_ORIGINS` (default `http://localhost:3001`, the MC dev server). Replace the mock with the real calendar service by keeping the same four endpoints.
 
