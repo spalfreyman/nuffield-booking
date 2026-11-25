@@ -1,5 +1,6 @@
 import { NextResponse, type NextRequest } from 'next/server';
 import { GATE_COOKIE, gateDisabled, tokenValid } from '@/lib/gate';
+import { SHARE_COOKIE, verifyShareToken } from '@/lib/share';
 
 // CORS for the Merchant Center custom application calling /api/admin/*.
 // In `mc-scripts start` the app runs inside https://mc.<region>.commercetools.com (a public https origin
@@ -13,7 +14,8 @@ const isAllowed = (origin: string) => origin === 'http://localhost:3001' || MC_O
 // /api/admin/* is excluded on purpose: the Merchant Center app calls it cross-origin and cannot send the cookie.
 async function gate(req: NextRequest): Promise<NextResponse | null> {
   const { pathname, search } = req.nextUrl;
-  if (gateDisabled() || pathname === '/gate' || pathname === '/api/gate') return null;
+  if (gateDisabled() || pathname === '/gate' || pathname === '/api/gate' || pathname.startsWith('/s/')) return null; // /s/* validates its own signed token
+  if (await verifyShareToken(req.cookies.get(SHARE_COOKIE)?.value)) return null; // opened from a booking link
   if (await tokenValid(req.cookies.get(GATE_COOKIE)?.value)) return null;
   if (pathname.startsWith('/api/')) return NextResponse.json({ error: 'password required' }, { status: 401 });
   const url = req.nextUrl.clone();
@@ -31,12 +33,13 @@ export async function middleware(req: NextRequest) {
         'access-control-allow-origin': origin,
         vary: 'origin',
         'access-control-allow-headers': 'content-type',
-        'access-control-allow-methods': 'GET,OPTIONS',
+        'access-control-allow-methods': 'GET,POST,OPTIONS',
         // Chrome's Private/Local Network Access: public page -> localhost preflight.
         'access-control-allow-private-network': 'true',
       }
     : {};
   if (req.method === 'OPTIONS') return new NextResponse(null, { status: ok ? 204 : 403, headers });
+  if (req.method === 'POST' && !ok) return NextResponse.json({ error: 'origin not allowed' }, { status: 403 }); // writes only from Merchant Center
   const res = NextResponse.next();
   Object.entries(headers).forEach(([k, v]) => res.headers.set(k, v));
   return res;

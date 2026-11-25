@@ -5,6 +5,7 @@ import SelectInput from '@commercetools-uikit/select-input';
 import Spacings from '@commercetools-uikit/spacings';
 import Text from '@commercetools-uikit/text';
 import { useCalendarApi } from '../../hooks/use-calendar-api';
+import BookingLink from './booking-link';
 import { useInventory, useLocations } from '../../hooks/use-locations';
 import { useQueryState } from '../../hooks/use-query-state';
 import type { AdminBooking, CalendarDay, GridCell, Service } from '../../types';
@@ -244,6 +245,14 @@ const Calendar = () => {
                   )}
                 </Text.Body>
               ))}
+              {loc && sku && (
+                <BookingLink
+                  locationKey={loc}
+                  sku={sku}
+                  startsAt={sel.cell.startsAt}
+                  projectKey={projectKey}
+                />
+              )}
             </Spacings.Stack>
           </div>
         )}

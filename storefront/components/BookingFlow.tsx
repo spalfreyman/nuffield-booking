@@ -3,7 +3,8 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { AUDIENCES, gbp } from '@/lib/types';
 import { SAMPLE, pf } from '@/lib/prefill';
-import type { Audience, Clinic, Family, Format, GeoResult, Product, Slot } from '@/lib/types';
+import { relevantFunding } from '@/lib/funding';
+import type { Audience, Clinic, Family, Format, GeoResult, Location, Product, Slot } from '@/lib/types';
 
 type Phase = 'audience' | 'family' | 'format' | 'product' | 'lead' | 'location' | 'date' | 'appointment' | 'details' | 'confirm';
 const STEP: Record<Phase, number> = { audience: 0, family: 1, format: 1, product: 1, lead: 1, location: 2, date: 3, appointment: 4, details: 5, confirm: 6 };
@@ -48,6 +49,40 @@ export default function BookingFlow() {
   const [hold, setHold] = useState<Hold | null>(null);
   const [result, setResult] = useState<Result | null>(null);
   const [flash, setFlash] = useState<string | null>(null);
+  // booking link (/book?cart=...): selection comes from a commercetools cart created in Merchant Center
+  const linkCart = qs.get('cart');
+  const [cartId, setCartId] = useState<string | null>(null);
+  const [cartStart, setCartStart] = useState<string | null>(null);
+  const [linkState, setLinkState] = useState<'idle' | 'loading' | 'error'>(linkCart ? 'loading' : 'idle');
+  const [linkError, setLinkError] = useState('');
+  const linkStarted = useRef(false);
+  useEffect(() => {
+    if (!linkCart || linkStarted.current) return;
+    linkStarted.current = true;
+    (async () => {
+      try {
+        const r = await fetch(`/api/cart-link?id=${encodeURIComponent(linkCart)}`);
+        if (r.status === 410) { setLinkError('This booking has already been completed.'); setLinkState('error'); return; }
+        if (!r.ok) { setLinkError('Sorry, we could not open this booking link.'); setLinkState('error'); return; }
+        const d = await r.json() as { cartId: string; audience: Audience; product: Product; family: Family; location: Location; startsAt: string; slot: Slot | null };
+        const loc = d.location;
+        const c: Clinic = { ...loc, distanceMiles: 0, firstAvailable: d.startsAt };
+        setAudience(d.audience); setFamily(d.family); setProduct(d.product);
+        setFormat(loc.type === 'remote' ? 'remote' : 'in-person');
+        setGeo({ label: loc.name, lat: loc.lat, lng: loc.lng, kind: 'location', locationKey: loc.key });
+        setDate(d.startsAt.slice(0, 10)); setClinic(c); setCartId(d.cartId); setCartStart(d.startsAt);
+        if (d.slot) {
+          try {
+            const h = await api<Hold & { slotId: string }>('/api/holds', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ slotId: d.slot.slotId }) });
+            setSlot(d.slot); setHold(h); setStack(['appointment']); setPhase('details');
+            setLinkState('idle'); return;
+          } catch { /* taken in the meantime: fall through to choosing another time */ }
+        }
+        setFlash('That appointment time is no longer available. Please choose another time.');
+        setStack(['date']); setPhase('appointment'); setLinkState('idle');
+      } catch { setLinkError('Sorry, we could not open this booking link.'); setLinkState('error'); }
+    })();
+  }, [linkCart]);
 
   const go = useCallback((p: Phase) => { setStack((s) => [...s, phase]); setPhase(p); window.scrollTo(0, 0); }, [phase]);
   const back = () => {
@@ -62,6 +97,12 @@ export default function BookingFlow() {
   const step = STEP[phase];
   const progress = phase === 'audience' ? 0 : Math.min(100, (step / 6) * 100 + (phase === 'confirm' ? 0 : 0));
 
+  if (linkState !== 'idle') return (
+    <div>
+      <div className="flow-head"><span className="logo">Nuffield Health</span></div>
+      <div className="flow"><div className="narrow"><h1 className="title">{linkState === 'loading' ? 'Opening your booking…' : 'Booking link'}</h1>{linkState === 'error' && <><p>{linkError}</p><a className="btn primary" href="/book">Start a new booking ›</a></>}</div></div>
+    </div>
+  );
   return (
     <div>
       <div className="flow-head"><span className="logo">Nuffield Health</span><a href="#help">Help and support</a></div>
@@ -89,12 +130,13 @@ export default function BookingFlow() {
               try {
                 setFlash(null);
                 const h = await api<Hold & { slotId: string }>('/api/holds', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ slotId: s.slotId }) });
+                if (cartId && (s.startsAt !== cartStart || c.key !== clinic?.key)) setCartId(null);
                 setClinic(c); setSlot(s); setHold(h); go('details');
               } catch { setFlash('Sorry, that appointment has just been taken. Please choose another time.'); }
             }} />
         )}
         {phase === 'details' && product && clinic && slot && hold && family && (
-          <DetailsStep product={product} family={family} audience={audience} format={format} clinic={clinic} slot={slot} hold={hold}
+          <DetailsStep cartId={cartId} product={product} family={family} audience={audience} format={format} clinic={clinic} slot={slot} hold={hold}
             onExpired={() => { setFlash('Your held appointment expired. Please choose a time again.'); setHold(null); setStack((s) => s.slice(0, -1)); setPhase('appointment'); }}
             onDone={(r) => { setResult(r); setStack([]); setPhase('confirm'); window.scrollTo(0, 0); }} />
         )}
@@ -348,7 +390,8 @@ function useCountdown(expiresAt: string, onExpired: () => void) {
   return `${m}:${String(s).padStart(2, '0')}`;
 }
 
-function DetailsStep({ product, family, audience, format, clinic, slot, hold, onExpired, onDone }: {
+function DetailsStep({ cartId, product, family, audience, format, clinic, slot, hold, onExpired, onDone }: {
+  cartId: string | null;
   product: Product; family: Family; audience: Audience; format: Format; clinic: Clinic; slot: Slot; hold: Hold; onExpired: () => void; onDone: (r: Result) => void;
 }) {
   const left = useCountdown(hold.expiresAt, onExpired);
@@ -404,7 +447,7 @@ function DetailsStep({ product, family, audience, format, clinic, slot, hold, on
         method: 'POST', headers: { 'content-type': 'application/json' },
         body: JSON.stringify({
           holdId: hold.holdId, sku: product.sku, locationKey: clinic.key, startsAt: slot.startsAt, audience, paymentToken: token,
-          patient: { ...f, address: manual ? f.manual : f.address }, funding: fund,
+          patient: { ...f, address: manual ? f.manual : f.address }, funding: relevantFunding(audience, fund), cartId,
         }),
       });
       onDone({ reference: r.booking.reference, startsAt: slot.startsAt });

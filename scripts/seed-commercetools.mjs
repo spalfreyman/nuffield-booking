@@ -83,6 +83,23 @@ const CUSTOM_TYPES = [
   { key: 'nh-booking-cart', name: L('Booking cart/order'), resourceTypeIds: ['order'], fieldDefinitions: [f('audience'), f('insurer'), f('policyNumber'), f('authCode'), f('membershipNumber'), f('companyCode'), f('calendarBookingId'), f('bookingStatus'), f('paymentToken')] },
 ];
 for (const t of CUSTOM_TYPES) await ensure('types', t.key, t, 'custom-types');
+// Fields added after the first seed (idempotent): readable appointment details on carts/orders, and the booking-link source.
+const FIELD = (name, label, type = 'String') => ({ name, label: L(label), required: false, type: { name: type }, inputHint: 'SingleLine' });
+const EXTRA_FIELDS = {
+  'nh-booking-cart': [FIELD('appointmentTime', 'Appointment (UK time)'), FIELD('appointmentStartsAt', 'Appointment starts', 'DateTime'), FIELD('appointmentEndsAt', 'Appointment ends', 'DateTime'), FIELD('appointmentLocation', 'Appointment location'), FIELD('appointmentService', 'Appointment service'), FIELD('source', 'Booking source')],
+  'nh-booking-line': [FIELD('appointmentTime', 'Appointment (UK time)')],
+};
+for (const [key, defs] of Object.entries(EXTRA_FIELDS)) {
+  const cur = await ct('GET', `/types/key=${key}`);
+  if (cur.status !== 200) continue;
+  const have = new Set(cur.json.fieldDefinitions.map((d) => d.name));
+  const actions = defs.filter((d) => !have.has(d.name)).map((fieldDefinition) => ({ action: 'addFieldDefinition', fieldDefinition }));
+  if (actions.length && !DRY) {
+    const r = await ct('POST', `/types/key=${key}`, { version: cur.json.version, actions });
+    console.log(`type ${key}: added ${actions.map((a) => a.fieldDefinition.name).join(', ')} (${r.status})`);
+  }
+}
+if (flag('--types-only')) { console.log('types only: done'); process.exit(0); }
 
 // --- 2. product types ---
 const A = (name, type = 'text', extra = {}) => ({ name, label: L(name), isRequired: false, type: typeof type === 'string' ? { name: type } : type, attributeConstraint: 'None', isSearchable: true, inputHint: 'SingleLine', ...extra });

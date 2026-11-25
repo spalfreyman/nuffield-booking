@@ -3,6 +3,7 @@ import { confirmBooking, getBooking } from '@/lib/calendar';
 import { getLocation, getProduct, ready } from '@/lib/catalogue';
 import { createOrder, ordersEnabled } from '@/lib/orders';
 import type { Audience } from '@/lib/types';
+import { relevantFunding } from '@/lib/funding';
 export const dynamic = 'force-dynamic';
 
 // Stand-in for: create commercetools cart (customerGroup, line item w/ slot custom fields) -> order.
@@ -18,14 +19,14 @@ export async function POST(req: Request) {
   if (needsCard && !b.paymentToken) return NextResponse.json({ error: 'payment_required' }, { status: 400 });
   const res = confirmBooking({
     holdId: b.holdId, sku: b.sku, locationKey: loc.key, startsAt: b.startsAt, audience, price: product.price,
-    patient: b.patient ?? {}, funding: b.funding ?? {}, paymentToken: b.paymentToken ?? null,
+    patient: b.patient ?? {}, funding: relevantFunding(audience, b.funding), paymentToken: b.paymentToken ?? null,
   });
   if ('error' in res) return NextResponse.json(res, { status: 410 });
   let order: { orderId: string; orderNumber: string; total: number } | null = null;
   if (ordersEnabled()) {
     try {
       const endsAt = new Date(new Date(b.startsAt).getTime() + product.durationMins * 60000).toISOString();
-      order = await createOrder(res.booking, endsAt, loc.type === 'remote' ? 'remote' : 'in-person');
+      order = await createOrder(res.booking, endsAt, loc.type === 'remote' ? 'remote' : 'in-person', typeof b.cartId === 'string' ? b.cartId : undefined);
       res.booking.orderId = order.orderId;
     } catch (e) {
       // The slot is already confirmed in the calendar; surface the problem instead of losing the booking.
